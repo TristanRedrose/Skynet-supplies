@@ -1,0 +1,68 @@
+@import "../../vars.scss";
+
+.b-header {
+    width: 100%;
+    position: relative;
+}
+
+.b-header__container {
+    height: 176px;
+}
+
+.b-header__top-decorator {
+    width: 100%;
+    height: 60px;
+    background-image: linear-gradient(180deg, $blue 0%, $blue 40%, $dark-blue 60%, $dark-blue 100%);
+    border-bottom: 1px snow solid;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    & a {
+        text-decoration: none;
+    }
+
+    & h3 {
+        margin: 0px;
+        margin-left: 76px;
+        font-size: 20px;
+        color: snow;
+    }
+}
+
+.b-header__bottom-decorator {
+    width: 100%;
+    height: 24px;
+    background-color: $dark-blue;
+    position: relative;
+}
+
+.b-header__logo-container {
+    left: 16px;
+    top: 50%;
+    transform: translate(0, -50%);
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 12%;
+    overflow: hidden;
+    object-fit: cover;
+    z-index: 20;
+}
+
+.header-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.b-header__circle-decorator {
+    position: absolute;
+    bottom: -30px;
+    left: 5%;
+    background-color: $dark-blue;
+    height: 120px;
+    width: 300px;
+    border-radius: 50%;
+    z-index: -1;
+}

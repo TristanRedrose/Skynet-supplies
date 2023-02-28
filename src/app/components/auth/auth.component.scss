@@ -1,0 +1,105 @@
+@import "../../vars.scss";
+
+.auth-form-container {
+    box-sizing: border-box;
+    width: 550px;
+    padding: 25px 50px 50px 50px;
+    margin: 0 auto;
+    border: 1px gray solid;
+    border-radius: 8px;
+
+}
+
+.auth-logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-logo {
+    height: 60px;
+    width: 60px;
+    margin: 16px 0px;
+}
+
+.auth-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & a {
+        text-decoration: none;
+        margin: 8px 0px;
+        font-size: 14px;
+    }
+
+    & h4 {
+        margin: 0px;
+    }
+}
+
+.auth-form-input {
+    box-sizing: border-box;
+    padding-left: 8px;
+    height: 36px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px $blue solid;
+
+    &.ng-touched.ng-invalid {
+        border: 1px red solid;
+    }
+
+    &:hover {
+        border: 1px gray solid;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px $blue solid;
+        box-shadow: 0px 0px 4px 1px rgba(18,20,20,0.6);
+    }
+}
+
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+        font-size: 20px;
+        font-weight: 700px;
+        margin-bottom: 8px;
+    }
+}
+
+.auth-submit-button {
+    width: 120px;
+    min-height: 48px;
+    border-radius: 8px;
+    margin-top: 24px;
+    margin-left: 50%;
+    transform: translate(-50%, 0%);
+    background-image: $main-gradient;
+    color: snow;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1px snow solid;
+    box-shadow: 0 5px $royal;
+
+    &:hover {
+        cursor: pointer;
+        background-image: $yellow-gradient;
+    }
+
+    &:active {
+        box-shadow: none;
+    }
+}
+
+.auth-error {
+    font-size: 12px;
+    color: red;
+    margin-bottom: 4px;
+}
