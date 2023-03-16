@@ -1,0 +1,87 @@
+<h3>Register employee</h3>
+
+<div class="form-container">
+    <form *ngIf="!registrationSuccess" class="registration-form" [formGroup]="registrationForm" (ngSubmit)="onRegistration()">
+        <label for="email">Email</label>
+        <input class="auth-form-input" id="email" type="text" formControlName="email" placeholder="Enter e-mail adress">
+
+        <div *ngIf="registrationForm.controls['email'].invalid && (registrationForm.controls['email'].touched || registrationForm.controls['email'].dirty)" 
+            class="auth-error">
+            <p>Please enter a valid email</p>
+        </div>
+
+        <div class="registration-form" formGroupName="passwordsInput">
+            <label for="password">Password</label>
+            <input class="auth-form-input"  id="password" type="password" formControlName="password" placeholder="Enter password" minlength="8">
+            <input class="auth-form-input" id="passConfirm" type="password" formControlName="passConfirm" placeholder="Confirm password" minlength="8">
+        </div>
+
+        <div *ngIf="((password.invalid && (password.touched || password.dirty)) 
+            || (passConfirm.invalid && (passConfirm.touched || passConfirm.dirty))
+            || passwordMissmatch)"
+            class="auth-error">
+            <p *ngIf="passConfirm.errors?.['required'] || password.errors?.['required']">Password fields cannot be empty</p>
+            <p *ngIf="passConfirm.errors?.['minlength'] || password.errors?.['minlength']">Password must contain a minimum of 8 characters</p>
+            <p *ngIf="passwordMissmatch">Passwords must match</p>
+        </div>
+        
+        <div class="registration-form" formGroupName="contactInfo">
+            <label for="name">Name</label>
+            <input class="auth-form-input" id="name" type="text" formControlName="name" placeholder="Enter name">
+
+            <div *ngIf="(name.invalid && (name.touched || name.dirty))" class="auth-error">
+                <p>Name field cannot be empty</p>
+            </div>
+
+            <label for="surname">Surname</label>
+            <input class="auth-form-input" id="surname" type="text" formControlName="surname" placeholder="Enter surname">
+
+            <div *ngIf="(surname.invalid && (surname.touched || surname.dirty))" class="auth-error">
+                <p>Name field cannot be empty</p>
+            </div>
+
+            <label for="phone">Phone number</label>
+            <input class="auth-form-input" id="phone" type="text" formControlName="phone" placeholder="Enter phone number">
+
+            <div *ngIf="(phone.invalid && (phone.touched || phone.dirty))" class="auth-error">
+                <p>Phone field cannot be empty</p>
+            </div>
+        </div>
+
+        <div class="registration-form" formGroupName="adress">
+            <label for="country">Country</label>
+            <input class="auth-form-input" id="country" type="text" formControlName="country" placeholder="Enter country">
+
+            <div *ngIf="(country.invalid && (country.touched || country.dirty))" class="auth-error">
+                <p>Country field cannot be empty</p>
+            </div>
+
+            <label for="city">City</label>
+            <input class="auth-form-input" id="city" type="text" formControlName="city" placeholder="Enter city">
+
+            <div *ngIf="(city.invalid && (city.touched || city.dirty))" class="auth-error">
+                <p>City field cannot be empty</p>
+            </div>
+
+            <label for="street">Street</label>
+            <input class="auth-form-input" id="street" type="text" formControlName="street" placeholder="Enter street">
+
+            <div *ngIf="(street.invalid && (street.touched || street.dirty))" class="auth-error">
+                <p>Street field cannot be empty</p>
+            </div>
+
+            <label for="postCode">Post code</label>
+            <input class="auth-form-input" id="postCode" type="text" formControlName="postCode" placeholder="Enter post code">
+
+            <div *ngIf="(postCode.invalid && (postCode.touched || postCode.dirty))" class="auth-error">
+                <p>Post code field cannot be empty</p>
+            </div>
+        </div>
+
+        <button class="auth-submit-button" type="submit">Register</button>
+    </form>
+</div>
+
+<div *ngIf="registrationSuccess">
+    <h3>User registration successfull.</h3>
+</div>

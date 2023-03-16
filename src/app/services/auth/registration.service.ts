@@ -39,4 +39,18 @@ export class RegistrationService {
             }));
     }
 
+    registerEmployee(request: RegistrationRequest): Observable<boolean> {
+        return this.http.post<boolean>("https://localhost:7046/Auth/Register/Employee", request).pipe(
+            map((res: boolean) => {
+                return res;
+            }),
+            catchError((error: HttpErrorResponse) => {
+                let errorMessage= '';
+                if (error.error instanceof ErrorEvent) {
+                    errorMessage = `Error ${error.error.message}`;
+                }
+                return throwError(() => new Error(errorMessage));
+            }));
+    }
+
 }

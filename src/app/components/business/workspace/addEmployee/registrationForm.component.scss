@@ -1,0 +1,71 @@
+@import "../../../../vars.scss";
+
+h3 {
+    text-align: center;
+}
+
+.form-container {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 32px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & label {
+        margin-bottom: 8px;
+    }
+
+    & input {
+        margin-bottom: 8px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 32px;
+        border: 1px $royal solid;
+        padding-left: 8px;
+
+        &.ng-touched.ng-invalid {
+            border: 1px red solid;
+        }
+    
+        &:hover {
+            border: 1px gray solid;
+        }
+    
+        &:focus {
+            outline: none;
+            border: 1px $blue solid;
+            box-shadow: 0px 0px 4px 1px rgba(18,20,20,0.6);
+        }
+    }
+}
+
+.auth-submit-button {
+    margin-top: 8px;
+    width: 120px;
+    align-self: center;
+    border-radius: 8px;
+    border: 1px $royal solid;
+    height: 32px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: $royal;
+        border: 1px $yellow-shade solid;
+        color: snow;
+    }
+}
+
+.auth-error {
+    & p {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+}

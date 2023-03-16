@@ -103,6 +103,10 @@ export class SessionService {
         return this._session;
     }
 
+    get token(): string | null {
+        return this._session.token;
+    }
+
     get username(): string | null {
         return this._session.username
     }

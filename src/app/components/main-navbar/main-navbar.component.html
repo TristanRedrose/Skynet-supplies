@@ -1,0 +1,34 @@
+<div class="b-about-bar">
+    <nav class="b-about-bar__content">
+        <div class="b-about-bar__navtext">
+            <a routerLink="about" routerLinkActive="nav-active">
+                About us
+                <img src="../../../assets/icons/information.png" alt="information" class="nav-icon">
+            </a>
+        </div>
+        <div class="b-about-bar__navtext">
+            <a>
+                News
+                <img src="../../../assets/icons/newspaper.png" alt="newspaper" class="nav-icon">
+            </a>
+        </div>
+        <div class="b-about-bar__navtext">
+            <a routerLink="contact" routerLinkActive="nav-active">
+                Contact
+                <img src="../../../assets/icons/contact.png" alt="contact" class="nav-icon">
+            </a> 
+        </div>
+        <div *ngIf="!userLoggedIn" class="b-about-bar__navtext b-about-bar__navtext--right">
+            <a routerLink="auth/login" routerLinkActive="nav-active">
+                Login
+                <img src="../../../assets/icons/login.png" alt="login" class="nav-icon">
+            </a>
+        </div>
+        <div *ngIf="userLoggedIn" class="b-about-bar__navtext b-about-bar__navtext--right" (click)="logOut()">
+            <a routerLinkActive="nav-active">
+                Logout
+                <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
+            </a>
+        </div>
+    </nav>
+</div>

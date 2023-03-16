@@ -24,6 +24,8 @@
     font-size: .79012em;
 
     & a {
+        display: flex;
+        align-items: center;
         text-decoration: none;
         color: black;
         cursor: pointer;
@@ -31,10 +33,33 @@
         &:hover {
             color: $blue;
         }
+        
+        &.nav-active {
+            color: $blue;
+        }
     }
 
     &.b-about-bar__navtext--right {
         position: absolute;
         right: 0px;
+    }
+}
+
+.nav-icon {
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 440px) {
+    .b-about-bar__navtext {
+        font-size: .6em;
+    }
+
+    .nav-icon {
+        height: 12px;
+        width: 12px;
     }
 }
