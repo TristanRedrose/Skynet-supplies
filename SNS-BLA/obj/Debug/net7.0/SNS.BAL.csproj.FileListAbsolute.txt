@@ -1,0 +1,15 @@
+D:\Software\Repos\SNS-API\SNS-BLA\bin\Debug\net7.0\SNS.BAL.deps.json
+D:\Software\Repos\SNS-API\SNS-BLA\bin\Debug\net7.0\SNS.BAL.dll
+D:\Software\Repos\SNS-API\SNS-BLA\bin\Debug\net7.0\SNS.BAL.pdb
+D:\Software\Repos\SNS-API\SNS-BLA\bin\Debug\net7.0\SNS.DAL.dll
+D:\Software\Repos\SNS-API\SNS-BLA\bin\Debug\net7.0\SNS.DAL.pdb
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.csproj.AssemblyReference.cache
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.AssemblyInfoInputs.cache
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.AssemblyInfo.cs
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.csproj.CoreCompileInputs.cache
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.csproj.CopyComplete
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.dll
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\refint\SNS.BAL.dll
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.pdb
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\ref\SNS.BAL.dll
