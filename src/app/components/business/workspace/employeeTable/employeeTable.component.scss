@@ -72,7 +72,7 @@ td {
 }
 
 .table-body {
-    &:nth-child(odd) {
+    &:nth-child(even) {
         background-color: snow;
     }
 }

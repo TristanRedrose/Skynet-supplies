@@ -19,6 +19,7 @@ import { AdminPageComponent } from './components/business/admin/admin.component'
 import { EmployeeRegistrationFormComponent } from './components/business/workspace/addEmployee/registrationForm.component';
 import { EmployeeTableComponent } from './components/business/workspace/employeeTable/employeeTable.component';
 import { AuthInterceptorService } from './services/auth/authInterceptorService';
+import { SpinnerComponent } from './components/loading/spinner.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AuthInterceptorService } from './services/auth/authInterceptorService';
     ContactComponent,
     AdminPageComponent,
     EmployeeRegistrationFormComponent,
-    EmployeeTableComponent
+    EmployeeTableComponent, 
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

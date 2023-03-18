@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { AbstractControl, FormGroup } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import { finalize } from "rxjs";
 import { RegistrationRequest } from "src/app/models/auth/authRequest.types";
 import { RegistrationService } from "src/app/services/auth/registration.service";
 import { AuthFormFactory } from "src/app/services/factories/auth-form-factory.service";
+import { LoadingService } from "src/app/services/loading/loading.service";
 
 @Component({
     selector: 'employee-registration-form',
@@ -16,8 +18,13 @@ export class EmployeeRegistrationFormComponent implements OnInit {
     registrationForm!: FormGroup;
     passwordMissmatch: boolean = false;
     registrationSuccess: boolean = false;
+    isLoading = this.loadingService.loading$;
 
-    constructor(private authFormFactory: AuthFormFactory, private registrationService: RegistrationService, private router: Router) {}
+    constructor(private authFormFactory: AuthFormFactory, 
+        private registrationService: RegistrationService, 
+        private router: Router, 
+        private loadingService: LoadingService,
+        ) {}
     
     ngOnInit(): void {
         this.registrationForm = this.authFormFactory.registrationForm();
@@ -65,7 +72,12 @@ export class EmployeeRegistrationFormComponent implements OnInit {
                 postCode: this.postCode.value.trim(),
             }
 
-            this.registrationService.registerEmployee(registrationRequest).subscribe((res: boolean) => {
+            this.loadingService.show();
+            this.registrationService.registerEmployee(registrationRequest)
+            .pipe(finalize(() => {
+                this.loadingService.hide();
+            }))
+            .subscribe((res: boolean) => {
                 if (res) {
                     this.router.navigate(['/admin/employee']);
                 }

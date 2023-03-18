@@ -1,14 +1,15 @@
-<div class="employees-container">
+<spinner-component [loading]="isLoading | async"></spinner-component>
+<div *ngIf="!(isLoading | async)" class="employees-container">
     <h3>Employees</h3>
     <div class="table-container">
         <table class="employees-table">
             <thead class="table-head">
                 <tr>
                     <th>
-                        ID
+                        NAME
                     </th>
                     <th>
-                        NAME
+                        SURNAME
                     </th>
                     <th>
                         EMAIL
@@ -24,10 +25,10 @@
             <tbody *ngFor="let employee of employees" class="table-body">
                 <tr>
                     <td>
-                        {{employee.id}}
+                        {{employee.name}}
                     </td>
                     <td>
-                        {{employee.name}}
+                        {{employee.surname}}
                     </td>
                     <td>
                         {{employee.email}}

@@ -80,5 +80,9 @@
         </div>
     </div>
 
-    <button class="auth-submit-button" type="submit">Register</button>
+    <div *ngIf="isLoading | async" class="fidget-container">
+        <spinner-component [loading]="isLoading | async"></spinner-component>
+    </div>
+
+    <button *ngIf="!(isLoading | async)" class="auth-submit-button" type="submit">Register</button>
 </form>

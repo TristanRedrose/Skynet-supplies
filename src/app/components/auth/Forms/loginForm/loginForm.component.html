@@ -1,24 +1,30 @@
-<div class="auth-nav">
-    <h4>Not registered?</h4>
-    <a routerLink="/auth/register">Register</a>
-</div>
-
-<form class="registration-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <label for="email">Email</label>
-    <input class="auth-form-input" id="email" type="text" formControlName="email" placeholder="Enter e-mail adress">
-
-    <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)" 
-        class="auth-error">
-        <p>Please enter a valid email</p>
+<div>
+    <div class="auth-nav">
+        <h4>Not registered?</h4>
+        <a routerLink="/auth/register">Register</a>
     </div>
 
-    <label for="password">Password</label>
-    <input class="auth-form-input" id="password" type="password" formControlName="password" placeholder="Enter password">
+    <form class="registration-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <label for="email">Email</label>
+        <input class="auth-form-input" id="email" type="text" formControlName="email" placeholder="Enter e-mail adress">
 
-    <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)" 
-        class="auth-error">
-        <p>Invalid password</p>
-    </div>  
+        <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)" 
+            class="auth-error">
+            <p>Please enter a valid email</p>
+        </div>
 
-    <input class="auth-submit-button" type="submit" value="Login">
-</form>
+        <label for="password">Password</label>
+        <input class="auth-form-input" id="password" type="password" formControlName="password" placeholder="Enter password">
+
+        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)" 
+            class="auth-error">
+            <p>Invalid password</p>
+        </div>  
+
+        <div *ngIf="isLoading | async" class="fidget-container">
+            <spinner-component [loading]="isLoading | async"></spinner-component>
+        </div>
+
+        <input *ngIf="!(isLoading | async)" class="auth-submit-button" type="submit" value="Login">
+    </form>
+</div>

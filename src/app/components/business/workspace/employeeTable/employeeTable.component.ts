@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { finalize } from "rxjs";
 import { User } from "src/app/models/users/user";
+import { LoadingService } from "src/app/services/loading/loading.service";
 import { UserService } from "src/app/services/users/userService";
 
 @Component({
@@ -9,14 +11,19 @@ import { UserService } from "src/app/services/users/userService";
 })
 
 export class EmployeeTableComponent implements OnInit {
-    constructor(private userService: UserService){}
+    employees: User[] = [];
+    isLoading = this.loadingService.loading$;
 
-    employees: User[] = []
+    constructor(private userService: UserService, private loadingService: LoadingService){}
 
     ngOnInit(): void {
-        this.userService.getAllEmployees().subscribe((res: User[]) => {
-            this.employees = res;
-        })
-
+        this.loadingService.show();
+        this.userService.getAllEmployees()
+            .pipe(finalize(() => {
+                this.loadingService.hide();
+            }))
+            .subscribe((res: User[]) => {
+                this.employees = res;
+            })
     }
 }

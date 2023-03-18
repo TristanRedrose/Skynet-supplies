@@ -1,13 +1,47 @@
 @import "../../../../vars.scss";
 
 h3 {
-    text-align: center;
+    text-align: left;
+    padding-left: 50px;
 }
 
+
+
 .form-container {
-    width: 60%;
+    box-sizing: border-box;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 32px;
+    padding-left: 25px;
+
+    & h4 {
+        margin: 16px 0px 8px 0px;
+    }
+}
+
+.group-border {
+    width: 100%;
+    border: none;
+    height: 0.5px;
+    color: $royal;
+    background-color: $royal;
+    margin-bottom: 32px;
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    & input {
+        margin-left: 24px;
+    }
+}
+
+.label-box {
+    line-height: 1.4em;
+    width: 100px;
+    text-align: right;
 }
 
 .registration-form {
@@ -15,15 +49,10 @@ h3 {
     flex-direction: column;
     justify-content: center;
 
-    & label {
-        margin-bottom: 8px;
-    }
-
     & input {
-        margin-bottom: 8px;
         border-radius: 4px;
         box-sizing: border-box;
-        height: 32px;
+        height: 24px;
         border: 1px $royal solid;
         padding-left: 8px;
 
@@ -53,6 +82,7 @@ h3 {
 
     &:hover {
         cursor: pointer;
+        background-color: lightgray;
     }
 
     &:active {
@@ -63,9 +93,11 @@ h3 {
 }
 
 .auth-error {
+    padding-left: 50px;
+
     & p {
         color: red;
         font-size: 12px;
-        margin-bottom: 8px;
+        line-height: 1.6em;
     }
 }

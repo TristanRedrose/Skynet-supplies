@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { LoginRequest } from "src/app/models/auth/authRequest.types";
 import { AuthFormFactory } from "src/app/services/factories/auth-form-factory.service";
 import { SessionService } from "src/app/services/auth/session.service";
+import { LoadingService } from "src/app/services/loading/loading.service";
+import { finalize } from "rxjs";
 
 @Component({
     selector: 'login-form',
@@ -14,8 +16,13 @@ import { SessionService } from "src/app/services/auth/session.service";
 export class LoginFormComponent implements OnInit {
 
     loginForm!: FormGroup;
+    isLoading = this.loadingService.loading$;
 
-    constructor(private authFormFactory: AuthFormFactory, private sessionService: SessionService, private router: Router) {}
+    constructor(private authFormFactory: AuthFormFactory, 
+            private sessionService: SessionService,
+            private router: Router,
+            private loadingService: LoadingService
+        ) {}
     
     ngOnInit(): void {
         this.loginForm = this.authFormFactory.loginForm();
@@ -31,9 +38,14 @@ export class LoginFormComponent implements OnInit {
             email: this.loginForm.get('email')!.value
         }
 
-        this.sessionService.logIn(loginRequest).subscribe(() => {
-            this.router.navigate(['']);
-        })
+        this.loadingService.show();
+        this.sessionService.logIn(loginRequest)
+            .pipe(finalize(() => {
+                this.loadingService.hide();
+            }))
+            .subscribe(() => {
+                this.router.navigate(['']);
+            })
 
     }
 }
