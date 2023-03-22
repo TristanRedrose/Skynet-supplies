@@ -12,7 +12,9 @@ import { UserService } from "src/app/services/users/userService";
 
 export class EmployeeTableComponent implements OnInit {
     employees: User[] = [];
+    employeeData: User | null = null;
     isLoading = this.loadingService.loading$;
+    isOpen: boolean = false;
 
     constructor(private userService: UserService, private loadingService: LoadingService){}
 
@@ -25,5 +27,21 @@ export class EmployeeTableComponent implements OnInit {
             .subscribe((res: User[]) => {
                 this.employees = res;
             })
+    }
+
+    openModal(employee: User): void {
+        this.employeeData = employee;
+        this.isOpen = true;
+    }
+
+    closeModal(): void {
+        this.employeeData = null;
+        this.isOpen = false;
+    }
+
+    deleteUser(id: string): void {
+        this.userService.deleteUser(id).subscribe(() => {
+            window.location.reload();
+        });
     }
 }

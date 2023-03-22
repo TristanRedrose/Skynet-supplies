@@ -9,9 +9,10 @@ import { EmployeeRegistrationFormComponent } from './components/business/workspa
 import { EmployeeTableComponent } from './components/business/workspace/employeeTable/employeeTable.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminPageComponent, children: [
+  { path: 'admin', component: AdminPageComponent, canActivate: [RoleGuard], children: [
     {path: 'employee', component: EmployeeTableComponent},
     {path: 'employee/add', component: EmployeeRegistrationFormComponent},
   ]},
@@ -20,7 +21,7 @@ const routes: Routes = [
     { path: 'contact', component: ContactComponent},
     { path: 'auth', component: AuthComponent, children: [
       { path: 'login', component: LoginFormComponent },
-      { path:'register', component: RegistrationFormComponent },
+      { path: 'register', component: RegistrationFormComponent },
     ]}
   ]}
 ];

@@ -1,7 +1,18 @@
 <spinner-component [loading]="isLoading | async"></spinner-component>
+
+<div *ngIf="(isOpen && employeeData)" class="modal">
+    <div class="modal-content">
+        <h4>Are you sure you want to remove employee: {{employeeData.name}} {{employeeData.surname}}?</h4>
+        <div class="modal-button-container">
+            <button class="edit-button" (click)="closeModal()">Close</button>
+            <button class="delete-button" (click)="deleteUser(employeeData.id)">Delete</button>
+        </div>
+    </div>
+</div>
+
 <div *ngIf="!(isLoading | async)" class="employees-container">
     <h3>Employees</h3>
-    <div class="table-container">
+    <div *ngIf="(employees.length > 0)" class="table-container">
         <table class="employees-table">
             <thead class="table-head">
                 <tr>
@@ -37,10 +48,14 @@
                         <button class="edit-button">Edit</button>
                     </td>
                     <td>
-                        <button class="delete-button">Delete</button>
+                        <button class="delete-button" (click)="openModal(employee)">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="!(employees.length > 0 && !(isLoading | async))">
+        <h4 class="default-text">No employees currently registered</h4>
     </div>
 </div>

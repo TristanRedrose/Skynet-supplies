@@ -33,19 +33,31 @@ export class LoginFormComponent implements OnInit {
             return
         }
 
-        let loginRequest: LoginRequest = {
-            password: this.loginForm.get('password')!.value,
-            email: this.loginForm.get('email')!.value
+        const password: string | null = this.loginForm.get('password')?.value;
+        const email: string | null = this.loginForm.get('email')?.value;
+
+        if (!email || !password) {
+            return;
+        }
+
+        const loginRequest: LoginRequest = {
+            password: password,
+            email: email
         }
 
         this.loadingService.show();
-        this.sessionService.logIn(loginRequest)
+        this.sessionService
+            .logIn(loginRequest)
             .pipe(finalize(() => {
                 this.loadingService.hide();
             }))
             .subscribe(() => {
+                if (this.sessionService.role === "Admin" || this.sessionService.role === "Employee" ) {
+                    this.router.navigate(['admin'])
+                    return;
+                }
+
                 this.router.navigate(['']);
             })
-
     }
 }

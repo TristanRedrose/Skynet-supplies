@@ -27,4 +27,8 @@ export class UserService {
                 return throwError(() => new Error(errorMessage));
             }));
     }
+
+    deleteUser(id: string): Observable<void> {
+        return this.http.delete<void>(`https://localhost:7046/User/${id}`);
+    }
 }

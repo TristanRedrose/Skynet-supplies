@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, Observable, throwError } from "rxjs";
@@ -32,5 +32,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         )
     }
 
-    
+    private is2xxStatus(response: HttpResponseBase) {
+        return response.status >= 200 && response.status < 300 && response.statusText === 'OK';
+    }
 }

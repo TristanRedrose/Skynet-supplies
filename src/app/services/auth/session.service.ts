@@ -34,7 +34,7 @@ export class SessionService {
         this._userLoggedIn.next(true);
     }
     
-    logIn(LoginRequest: LoginRequest): Observable <void>  {
+    logIn(LoginRequest: LoginRequest): Observable<void>  {
         return this.http.post<AuthResponse>("https://localhost:7046/Auth/Login", LoginRequest).pipe(map((res: AuthResponse) => {
             const session = {
                 token: res.token,
@@ -52,7 +52,6 @@ export class SessionService {
              else {
                 errorMessage = `Error code ${error.status}; message: ${error}`;
             }
-            console.log(errorMessage);
             return throwError(() => new Error(errorMessage));
         }));
         
@@ -75,8 +74,6 @@ export class SessionService {
         console.log("logged out");
         this.router.navigate(["/auth/login"]);
     };
-
-    
 
     userLoggedIn(): Observable<boolean> {
         return this._userLoggedIn;
@@ -108,6 +105,10 @@ export class SessionService {
     }
 
     get username(): string | null {
-        return this._session.username
+        return this._session.username;
+    }
+
+    get role(): string | null {
+        return this._session.role;
     }
 }
