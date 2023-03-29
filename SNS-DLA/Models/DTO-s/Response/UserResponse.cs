@@ -19,6 +19,7 @@ namespace SNS_DLA.Models.DTO_s.Response
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        
+        [JsonPropertyName("surname")]
+        public string Surname { get; set; }
     }
 }

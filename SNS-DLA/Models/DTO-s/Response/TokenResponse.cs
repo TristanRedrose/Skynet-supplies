@@ -11,5 +11,7 @@ namespace SNS_DLA.Models.DTO_s.Response
     {
         public JwtSecurityToken Token { get; set; }
         public string TokenAsString { get; set; }
+
+        public string Role { get; set; }
     }
 }

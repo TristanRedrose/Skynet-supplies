@@ -18,7 +18,7 @@ namespace SNS_API.Controllers.BaseController
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddAsync(TEntity entity)
+        public virtual async Task<ActionResult> AddAsync(TEntity entity)
         {
             var actionSucces = await _service.AddAsync(entity);
             if (actionSucces)

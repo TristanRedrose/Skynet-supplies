@@ -79,3 +79,5 @@ D:\Software\Repos\SNS-API\SNS-API\obj\Debug\net7.0\ref\SNS.PL.dll
 D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\SNS.BAL.dll
 D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\SNS.BAL.pdb
 D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Software\Repos\SNS-API\SNS-API\obj\Debug\net7.0\SNS_API.Properties.Resources.resources
+D:\Software\Repos\SNS-API\SNS-API\obj\Debug\net7.0\SNS.PL.csproj.GenerateResource.cache

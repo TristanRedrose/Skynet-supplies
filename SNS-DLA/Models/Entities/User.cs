@@ -10,6 +10,9 @@ namespace SNS_DLA.Models.Entities
 {
     public class User : IdentityUser
     {
+
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public int ContactInfoId { get; set; }
         public ContactInfo ContactInfo { get; set; }
     }

@@ -35,7 +35,8 @@ namespace SNS_BLA.Services.UserService
                 var userData = new UserResponse
                 {
                     Id = user.Id,
-                    Name = user.UserName,
+                    Name = user.Name,
+                    Surname = user.Surname,
                     Email = user.Email,
                 };
                 
@@ -56,6 +57,68 @@ namespace SNS_BLA.Services.UserService
             }
 
             return false;
+        }
+
+        public async Task<UserDetails> GetUserByIdAsync(string id)
+        {
+            var user = await _userManager.Users
+                .Where(x => x.Id == id)
+                .Include(u => u.ContactInfo)
+                .FirstAsync();
+
+            UserDetails userDetails = new UserDetails
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                City = user.ContactInfo.City,
+                Country = user.ContactInfo.Country,
+                Street = user.ContactInfo.StreetAddress,
+                PostCode = user.ContactInfo.PostCode,
+            };
+
+            return userDetails;
+        }
+
+        public async Task<bool> UpdateUserAsync(UserDetails userData)
+        {
+            try
+            {
+                var user = await _userManager.Users
+                .Where(u => u.Id == userData.Id)
+                .Include(u => u.ContactInfo)
+                .FirstOrDefaultAsync();
+
+                if (user == null)
+                {
+                    return false;
+                }
+
+                user.Name = userData.Name;
+                user.Surname = userData.Surname;
+                user.PhoneNumber = userData.Phone;
+                user.Email = userData.Email;
+                user.ContactInfo.Country = userData.Country;
+                user.ContactInfo.City = userData.City;
+                user.ContactInfo.StreetAddress = userData.Street;
+                user.ContactInfo.PostCode = userData.PostCode;
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
         }
     }
 }

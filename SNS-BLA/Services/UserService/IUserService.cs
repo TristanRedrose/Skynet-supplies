@@ -7,6 +7,8 @@ namespace SNS_BLA.Services.UserService
     {
         public Task<IEnumerable<User>> GetAllUsersAsync();
         public Task<IEnumerable<UserResponse>> GetUsersByRole(string id);
-        public Task<bool> DeleteUserAsync(string Id);
+        public Task<bool> DeleteUserAsync(string id);
+        public Task<UserDetails> GetUserByIdAsync(string id);
+        public Task<bool> UpdateUserAsync(UserDetails userData);
     }
 }

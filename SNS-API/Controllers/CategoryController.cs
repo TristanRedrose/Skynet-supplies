@@ -9,12 +9,19 @@ namespace SNS_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize(Policy = "EmployeeOnly")]
+    [Authorize(Policy = "AdminOnly")]
     public class CategoryController : BaseController<Category>
     {
         public CategoryController(ICategoryService service) : base(service)
         {
             
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public override async Task<ActionResult> AddAsync([FromBody] Category category)
+        {
+            return await base.AddAsync(category);
         }
 
         [HttpGet]
@@ -26,8 +33,8 @@ namespace SNS_API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route(":id")]
-        public override async Task<ActionResult<Category>> GetByIdAsync(int id)
+        [Route("{id}")]
+        public override async Task<ActionResult<Category>> GetByIdAsync([FromRoute] int id)
         {
             return await base.GetByIdAsync(id);
         }

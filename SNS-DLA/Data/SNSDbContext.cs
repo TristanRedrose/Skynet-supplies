@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace SNS_DLA.Data
 {
-    public class SNSDbContext : IdentityDbContext
+    public class SNSDbContext : IdentityDbContext<User>
     {
 
-        public DbSet<User> Customers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Product> Products { get; set; }

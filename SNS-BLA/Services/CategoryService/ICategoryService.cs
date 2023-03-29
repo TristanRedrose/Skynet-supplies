@@ -10,6 +10,5 @@ namespace SNS_BLA.Services.CategoryService
 {
     public interface ICategoryService : IBaseService<Category>
     {
-
     }
 }

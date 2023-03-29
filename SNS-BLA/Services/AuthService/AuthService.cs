@@ -52,7 +52,9 @@ namespace SNS_BLA.Services.UserService
 
             var identityUser = new User
             {
-                UserName = request.Name,
+                Name = request.Name,
+                Surname = request.Surname,
+                UserName = request.Email,
                 Email = request.Email,
                 PhoneNumber = request.Phone,
                 ContactInfo = userContactInfo,
@@ -74,6 +76,7 @@ namespace SNS_BLA.Services.UserService
                         Token = tokenResponse.TokenAsString,
                         ExpireDate = tokenResponse.Token.ValidTo,
                         Username = identityUser.UserName,
+                        Role = claim.Value,
                     }
                 };
             }
@@ -119,7 +122,9 @@ namespace SNS_BLA.Services.UserService
             
             var identityUser = new User
             {
-                UserName = request.Username,
+                Name = "Placeholder",
+                Surname = "Placeholder",
+                UserName = $"{request.Username}@local.com",
                 Email = $"{request.Username}@local.com",
                 PhoneNumber = "0123456789",
                 ContactInfo = userContactInfo,
@@ -141,6 +146,7 @@ namespace SNS_BLA.Services.UserService
                         Token = tokenResponse.TokenAsString,
                         ExpireDate = tokenResponse.Token.ValidTo,
                         Username = identityUser.UserName,
+                        Role = claim.Value
                     }
                 };
             }
@@ -196,6 +202,7 @@ namespace SNS_BLA.Services.UserService
                     Token = tokenResponse.TokenAsString,
                     ExpireDate = tokenResponse.Token.ValidTo,
                     Username = user.UserName,
+                    Role = tokenResponse.Role,
                 }
             };
         }
@@ -204,7 +211,10 @@ namespace SNS_BLA.Services.UserService
         {
 
             var userClaims = _userManager.GetClaimsAsync(user).Result;
-            var userRole = userClaims.Where(x => x.Type == ClaimTypes.Role).First();
+            var userRole = userClaims
+                .Where(x => x.Type == ClaimTypes.Role)
+                .First();
+
             var claims = new[]
             {
                 new Claim("Email", user.Email),
@@ -229,6 +239,7 @@ namespace SNS_BLA.Services.UserService
             {
                 Token = token,
                 TokenAsString = tokenAsString,
+                Role = userRole.Value
             };
         }
 

@@ -81,6 +81,7 @@ var app = builder.Build();
 //Add admin in terminal
 foreach (var argument in args)
 {
+    Console.WriteLine(argument);
     if (argument == "--addSuperuser")
     {
         using var scope = app.Services.CreateScope();

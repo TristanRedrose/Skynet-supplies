@@ -24,8 +24,8 @@ namespace SNS_API.Controllers
         }
 
         [HttpGet]
-        [Route(":id")]
-        public override async Task<ActionResult<Order>> GetByIdAsync(int id)
+        [Route("{id}")]
+        public override async Task<ActionResult<Order>> GetByIdAsync([FromRoute] int id)
         {
             return await base.GetByIdAsync(id);
         }

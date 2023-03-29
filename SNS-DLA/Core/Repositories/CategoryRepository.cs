@@ -1,4 +1,5 @@
-﻿using SNS_DLA.Core.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using SNS_DLA.Core.Contracts;
 using SNS_DLA.Core.Generics.GenericRepository;
 using SNS_DLA.Data;
 using SNS_DLA.Models.Entities;

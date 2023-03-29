@@ -12,9 +12,10 @@ namespace SNS_BLA.Services.CategoryService
 {
     public class CategoryService : BaseService<Category> , ICategoryService
     {
+
         public CategoryService(IUnitOfWork unitOfWork, ICategoryRepository repository) : base(unitOfWork, repository)
         {
-
+           
         }
     }
 }
