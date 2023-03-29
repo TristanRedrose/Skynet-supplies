@@ -1,0 +1,12 @@
+<h3>EDIT EMPLOYEE</h3>
+
+<spinner-component [loading]="isLoading | async"></spinner-component>
+
+<div *ngIf="(userFormData)">
+    <user-data-form
+        [userFormData]="userFormData"
+        [submitButtonText]="submitButtonText"
+        (newSubmitEvent)="updateUser($event)"
+    >
+    </user-data-form>
+</div>

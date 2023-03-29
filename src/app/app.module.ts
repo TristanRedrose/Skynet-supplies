@@ -20,6 +20,10 @@ import { EmployeeRegistrationFormComponent } from './components/business/workspa
 import { EmployeeTableComponent } from './components/business/workspace/employeeTable/employeeTable.component';
 import { AuthInterceptorService } from './services/auth/authInterceptorService';
 import { SpinnerComponent } from './components/loading/spinner.component';
+import { UserDataForm } from './components/business/admin/forms/userDataForm/userDataForm';
+import { EditEmployeeFormComponent } from './components/business/workspace/editEmployee/editEmployee.component';
+import { CategoryFormComponent } from './components/business/admin/forms/categoryForm/categoryForm.component';
+import { AddCategoryComponent } from './components/business/workspace/addCategory/addCategory.component';
 
 
 @NgModule({
@@ -38,7 +42,11 @@ import { SpinnerComponent } from './components/loading/spinner.component';
     AdminPageComponent,
     EmployeeRegistrationFormComponent,
     EmployeeTableComponent, 
-    SpinnerComponent
+    SpinnerComponent,
+    UserDataForm,
+    EditEmployeeFormComponent,
+    CategoryFormComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,

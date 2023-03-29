@@ -40,7 +40,7 @@ export class RegistrationFormComponent implements OnInit {
 
             this.password.setErrors({'passwordMissmatch': true});
             this.passConfirm.setErrors({'passwordMissmatch': true});
-            passwordsInput.valueChanges.subscribe(() => {
+            let subscription = passwordsInput.valueChanges.subscribe(() => {
                 if ((!this.password.value.trim() || !this.passConfirm.value.trim())) {
                     return
                 }
@@ -52,12 +52,13 @@ export class RegistrationFormComponent implements OnInit {
                 this.password.setErrors(null);
                 this.passConfirm.setErrors(null);
                 this.passwordMissmatch = false;
+                subscription?.unsubscribe;
             });
             return;
         }
 
         if (this.registrationForm.valid) {
-            const registrationRequest : RegistrationRequest = {
+            let registrationRequest : RegistrationRequest = {
                 email: this.email.value.trim(),
                 password: this.password.value.trim(),
                 passConfirm: this.passConfirm.value.trim(),
@@ -71,14 +72,13 @@ export class RegistrationFormComponent implements OnInit {
             }
 
             this.loadingService.show();
-            this.registrationService
-                .registerUser(registrationRequest)
-                .pipe(finalize(() => {
-                    this.loadingService.hide();
-                }))
-                .subscribe(() => {
-                    this.router.navigate(['']);
-                });
+            this.registrationService.registerUser(registrationRequest)
+            .pipe(finalize(() => {
+                this.loadingService.hide();
+            }))
+            .subscribe(() => {
+                this.router.navigate(['']);
+            });
         }
     }
 

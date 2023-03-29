@@ -1,0 +1,31 @@
+<div class="form-container">
+  <form class="category-form" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <h4>Category</h4>
+    <hr class="group-border">
+
+    <div class="input-area">
+      <div class="label-box">
+        <label for="categoryName">Name:</label>
+      </div>
+
+      <input type="text" class="form-input" id="categoryName" formControlName="category" placeholder="Category name">
+    </div>
+
+    <h4>Subcategories</h4>
+    <hr class="group-border">
+
+    <div formArrayName="subCategory">
+      <div class="input-area" *ngFor="let subCategory of subCategories.controls; let i = index">
+        <div class="label-box">
+          <label [for]="i">Name:</label>
+        </div>
+        <input [id]="i" type="text" class="form-input" [formControlName]="i" placeholder="Subcategory name">
+        <button class="remove-input-button" *ngIf="(i !== 0)" type="button" (click)="removeSubCategory(i)">-</button>
+      </div>
+    </div>
+
+    <button type="button" class="add-input-button" (click)="addSubCategory()">Add Subcategory</button>
+    
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>

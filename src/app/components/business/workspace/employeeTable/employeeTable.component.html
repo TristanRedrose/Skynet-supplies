@@ -44,11 +44,11 @@
                     <td>
                         {{employee.email}}
                     </td>
-                    <td>
-                        <button class="edit-button">Edit</button>
+                    <td class="button-box">
+                        <button class="edit-button" (click)="goToEdit(employee.id)">Edit</button>
                     </td>
-                    <td>
-                        <button class="delete-button" (click)="openModal(employee)">Delete</button>
+                    <td class="button-box">
+                        <button class="delete-button" type="text" (click)="openModal(employee)">Delete</button>
                     </td>
                 </tr>
             </tbody>

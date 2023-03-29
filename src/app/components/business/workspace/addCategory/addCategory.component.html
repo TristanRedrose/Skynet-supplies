@@ -1,0 +1,9 @@
+<h3>Add Category</h3>
+
+<spinner-component [loading]="isLoading | async"></spinner-component>
+
+<category-form
+    (newSubmitEvent)="addCategory($event)"
+>
+
+</category-form>

@@ -10,8 +10,16 @@ export class RoleGuard implements CanActivate {
   constructor(private sessionService: SessionService, private router: Router) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    this.sessionService.checkSession();
+    
+    if (!this.sessionService.role){
+      this.router.navigate(['auth/login']);
+      return false;
+    }
 
-    if (this.sessionService.role === "Admin" || this.sessionService.role === "Employee") {
+    const validRoles: string[] = ["Admin", "Employee"];
+
+    if (validRoles.includes(this.sessionService.role)) {
       return true;
     }
 

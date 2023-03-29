@@ -17,7 +17,7 @@ td, th {
 }
 
 td {
-    padding: 8px 0px 8px 8px;
+    padding: 12px 0px 12px 8px;
 }
 
 .table-head, .table-body {
@@ -109,4 +109,9 @@ td {
 
 .default-text {
     text-align: center;
+}
+
+.button-box {
+    text-align: center;
+    padding-left: 0px;
 }

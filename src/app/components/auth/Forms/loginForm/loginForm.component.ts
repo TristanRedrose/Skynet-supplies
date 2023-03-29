@@ -17,6 +17,7 @@ export class LoginFormComponent implements OnInit {
 
     loginForm!: FormGroup;
     isLoading = this.loadingService.loading$;
+    validRoles: string[] = ["Admin", "Employee"];
 
     constructor(private authFormFactory: AuthFormFactory, 
             private sessionService: SessionService,
@@ -52,7 +53,7 @@ export class LoginFormComponent implements OnInit {
                 this.loadingService.hide();
             }))
             .subscribe(() => {
-                if (this.sessionService.role === "Admin" || this.sessionService.role === "Employee" ) {
+                if (this.sessionService.role && this.validRoles.includes(this.sessionService.role)) {
                     this.router.navigate(['admin'])
                     return;
                 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { finalize } from "rxjs";
 import { User } from "src/app/models/users/user";
 import { LoadingService } from "src/app/services/loading/loading.service";
@@ -16,7 +17,10 @@ export class EmployeeTableComponent implements OnInit {
     isLoading = this.loadingService.loading$;
     isOpen: boolean = false;
 
-    constructor(private userService: UserService, private loadingService: LoadingService){}
+    constructor(private userService: UserService, 
+        private loadingService: LoadingService,
+        private router: Router
+    ){}
 
     ngOnInit(): void {
         this.loadingService.show();
@@ -43,5 +47,12 @@ export class EmployeeTableComponent implements OnInit {
         this.userService.deleteUser(id).subscribe(() => {
             window.location.reload();
         });
+    }
+
+    goToEdit(id:string) {
+        this.router.navigate(
+            ['/admin/employee/edit'],
+            { queryParams: { id: `${id}` }}
+          );
     }
 }
