@@ -1,0 +1,14 @@
+<div class="form-container">
+    <form class="category-form" [formGroup]="nameEditForm" (ngSubmit)="onSubmit()">
+  
+      <div class="input-area">
+        <div class="label-box">
+          <label for="name">Name:</label>
+        </div>
+
+        <input type="text" class="form-input" id="name" formControlName="name" placeholder="Category name">
+      </div>
+      
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>

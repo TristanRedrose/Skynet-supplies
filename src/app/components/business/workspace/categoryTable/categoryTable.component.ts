@@ -1,23 +1,23 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { finalize } from "rxjs";
-import { User } from "src/app/models/users/user";
 import { LoadingService } from "src/app/services/loading/loading.service";
+import { CategoryService } from "src/app/services/categories/category.service";
+import { Category } from "src/app/models/categories/category.models";
 import { ModalService } from "src/app/services/modal/modal.service";
-import { UserService } from "src/app/services/users/userService";
 
 @Component({
-    selector: 'employee-table-component',
-    templateUrl: './employeeTable.component.html',
-    styleUrls: ['./employeeTable.component.scss']
+    selector: 'category-table-component',
+    templateUrl: './categoryTable.component.html',
+    styleUrls: ['./categoryTable.component.scss']
 })
 
-export class EmployeeTableComponent implements OnInit {
-    employees: User[] = [];
-    employeeData: User | null = null;
+export class CategoryTableComponent implements OnInit {
+    categories: Category[] = [];
+    categoryData: Category | null = null;
     isLoading = this.loadingService.loading$;
 
-    constructor(private userService: UserService, 
+    constructor(private categoryService: CategoryService, 
         private loadingService: LoadingService,
         private router: Router,
         private modalService: ModalService,
@@ -25,34 +25,34 @@ export class EmployeeTableComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadingService.show();
-        this.userService.getAllEmployees()
+        this.categoryService.getAllCategories()
             .pipe(finalize(() => {
                 this.loadingService.hide();
             }))
-            .subscribe((res: User[]) => {
-                this.employees = res;
+            .subscribe((res: Category[]) => {
+                this.categories = res;
             })
     }
 
-    openModal(employee: User): void {
-        this.employeeData = employee;
+    openModal(category: Category): void {
+        this.categoryData = category;
         this.modalService.show();
     }
 
     closeModal(): void {
-        this.employeeData = null;
+        this.categoryData = null;
         this.modalService.hide();
     }
 
-    deleteUser(id: string): void {
-        this.userService.deleteUser(id).subscribe(() => {
+    deleteCategory(id: string): void {
+        this.categoryService.deleteCategory(id).subscribe(() => {
             window.location.reload();
         });
     }
 
     goToEdit(id:string) {
         this.router.navigate(
-            ['/admin/employee/edit'],
+            ['/admin/categories/edit'],
             { queryParams: { id: `${id}` }}
           );
     }

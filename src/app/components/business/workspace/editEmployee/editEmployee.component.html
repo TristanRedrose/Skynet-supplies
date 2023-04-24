@@ -5,7 +5,6 @@
 <div *ngIf="(userFormData)">
     <user-data-form
         [userFormData]="userFormData"
-        [submitButtonText]="submitButtonText"
         (newSubmitEvent)="updateUser($event)"
     >
     </user-data-form>

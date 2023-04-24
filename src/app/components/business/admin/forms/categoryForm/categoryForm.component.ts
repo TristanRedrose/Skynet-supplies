@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Category, SubCategory } from "src/app/models/categories/category.models";
+import { Category } from "src/app/models/categories/category.models";
+import { CreateCategoryRequest, SubCategoryRequest } from "src/app/models/categories/createCategoryRequest.models";
 import { CategoryFormFactory } from "src/app/services/factories/category-form-factory";
 
 @Component({
@@ -11,12 +12,29 @@ import { CategoryFormFactory } from "src/app/services/factories/category-form-fa
 
 export class CategoryFormComponent implements OnInit {
     categoryForm!:FormGroup;
-    @Output() newSubmitEvent = new EventEmitter<Category>();
+    @Output() newSubmitEvent = new EventEmitter<CreateCategoryRequest>();
+    @Input() categoryFormData: Category | undefined;
 
     constructor(private categoryFormFactory: CategoryFormFactory) {}
 
     ngOnInit(): void {
         this.categoryForm = this.categoryFormFactory.categoryForm();
+
+        if (this.categoryFormData) {
+            const { name, subcategories } = this.categoryFormData
+
+            this.categoryForm.patchValue({
+                category: name,
+            })
+            console.log(subcategories)
+            subcategories.forEach((element, index) => {
+                if (index === 0) {
+                    this.subCategories.controls[index].patchValue(element.name);
+                } else {
+                    this.subCategories.push(new FormControl(`${element.name}`, Validators.required));
+                }
+            });
+        }
     }
 
     get subCategories(): FormArray {
@@ -31,24 +49,20 @@ export class CategoryFormComponent implements OnInit {
         this.subCategories.removeAt(index);
     }
 
-    getSubmitedData(): Category {
-        const submitedData: Category = {
+    getSubmitedData(): CreateCategoryRequest {
+        const submitedData: CreateCategoryRequest = {
             name: this.categoryForm.get('category')?.value,
             subCategories: [],
         }
 
-        console.log(submitedData)
-
         this.subCategories.controls.forEach((element) => {
-            const subCategory: SubCategory = {
+            const subCategory: SubCategoryRequest = {
                 name: element.value,
-                products: [],
             }
             submitedData.subCategories.push(subCategory);
         })
 
         return submitedData;
-
     }
 
     onSubmit() {

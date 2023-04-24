@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { finalize } from "rxjs";
-import { Category } from "src/app/models/categories/category.models";
+import { CreateCategoryRequest } from "src/app/models/categories/createCategoryRequest.models";
 import { CategoryService } from "src/app/services/categories/category.service";
 import { LoadingService } from "src/app/services/loading/loading.service";
 
@@ -14,19 +15,22 @@ export class AddCategoryComponent implements OnInit {
 
     isLoading = this.loadingService.loading$;
 
-    constructor(private loadingService: LoadingService,
-        private categoryService: CategoryService
+    constructor(
+        private loadingService: LoadingService,
+        private categoryService: CategoryService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
         
     }
 
-    addCategory(categoryData: Category) {
+    addCategory(categoryData: CreateCategoryRequest) {
         this.loadingService.show();
         this.categoryService.addCategory(categoryData)
         .pipe(finalize(() => {
             this.loadingService.hide();
+            this.router.navigate(['admin/categories']);
         }))
         .subscribe();
     }

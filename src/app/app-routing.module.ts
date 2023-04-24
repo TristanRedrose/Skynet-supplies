@@ -7,6 +7,8 @@ import { RegistrationFormComponent } from './components/auth/Forms/registrationF
 import { AdminPageComponent } from './components/business/admin/admin.component';
 import { AddCategoryComponent } from './components/business/workspace/addCategory/addCategory.component';
 import { EmployeeRegistrationFormComponent } from './components/business/workspace/addEmployee/registrationForm.component';
+import { CategoryTableComponent } from './components/business/workspace/categoryTable/categoryTable.component';
+import { EditCategoryFormComponent } from './components/business/workspace/editCategory/editCategory.component';
 import { EditEmployeeFormComponent } from './components/business/workspace/editEmployee/editEmployee.component';
 import { EmployeeTableComponent } from './components/business/workspace/employeeTable/employeeTable.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -18,7 +20,9 @@ const routes: Routes = [
     {path: 'employee', component: EmployeeTableComponent},
     {path: 'employee/add', component: EmployeeRegistrationFormComponent},
     {path: 'employee/edit', component: EditEmployeeFormComponent},
+    {path: 'categories', component: CategoryTableComponent},
     {path: 'categories/add', component: AddCategoryComponent},
+    {path: 'categories/edit', component: EditCategoryFormComponent},
   ]},
   { path: '', component: LayoutComponent, children: [
     { path: 'about', component: AboutComponent},

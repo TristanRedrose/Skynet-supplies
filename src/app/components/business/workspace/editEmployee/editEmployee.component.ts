@@ -17,7 +17,6 @@ export class EditEmployeeFormComponent implements OnInit {
     id: string = "";
     userFormData: UserDetails | undefined;
     registrationSuccess: boolean = false;
-    submitButtonText: string = "Edit employee";
     isLoading = this.loadingService.loading$;
 
     constructor(private userService: UserService, 

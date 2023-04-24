@@ -21,7 +21,6 @@ export class SessionService {
         role: null,
     }
 
-
     // Typescript issue with NodeJS.Timeout type
     private _sessionTimer: any;
     

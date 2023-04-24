@@ -18,7 +18,6 @@ export class UserDataForm implements OnInit {
     passwordMissmatch: boolean = false;
     @Output() newSubmitEvent = new EventEmitter<UserDetails>();
     @Input() userFormData: UserDetails | undefined;
-    @Input() submitButtonText: string = "Submit";
 
     constructor(private userFormFactory: UserFormFactory,
         private userService: UserService

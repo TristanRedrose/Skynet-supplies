@@ -24,6 +24,10 @@ import { UserDataForm } from './components/business/admin/forms/userDataForm/use
 import { EditEmployeeFormComponent } from './components/business/workspace/editEmployee/editEmployee.component';
 import { CategoryFormComponent } from './components/business/admin/forms/categoryForm/categoryForm.component';
 import { AddCategoryComponent } from './components/business/workspace/addCategory/addCategory.component';
+import { CategoryTableComponent } from './components/business/workspace/categoryTable/categoryTable.component';
+import { EditCategoryFormComponent } from './components/business/workspace/editCategory/editCategory.component';
+import { SingleFieldFormComponent } from './components/business/admin/forms/singleFieldForm/singleFieldForm.component';
+import { ModalComponent } from './components/modals/deleteItemModal/modal.component';
 
 
 @NgModule({
@@ -46,7 +50,11 @@ import { AddCategoryComponent } from './components/business/workspace/addCategor
     UserDataForm,
     EditEmployeeFormComponent,
     CategoryFormComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    CategoryTableComponent,
+    EditCategoryFormComponent,
+    SingleFieldFormComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

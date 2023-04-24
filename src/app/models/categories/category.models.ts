@@ -1,9 +1,11 @@
 export type Category = {
+    categoryId: string,
     name: string,
-    subCategories: SubCategory[],
+    subcategories: SubCategory[],
 }
 
 export type SubCategory = {
+    subcategoryId: string,
     name: string,
-    products: []
+    categoryId: string,
 }

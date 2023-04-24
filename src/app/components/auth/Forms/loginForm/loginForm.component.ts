@@ -47,8 +47,7 @@ export class LoginFormComponent implements OnInit {
         }
 
         this.loadingService.show();
-        this.sessionService
-            .logIn(loginRequest)
+        this.sessionService.logIn(loginRequest)
             .pipe(finalize(() => {
                 this.loadingService.hide();
             }))
