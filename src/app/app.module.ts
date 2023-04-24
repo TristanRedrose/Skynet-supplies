@@ -27,7 +27,8 @@ import { AddCategoryComponent } from './components/business/workspace/addCategor
 import { CategoryTableComponent } from './components/business/workspace/categoryTable/categoryTable.component';
 import { EditCategoryFormComponent } from './components/business/workspace/editCategory/editCategory.component';
 import { SingleFieldFormComponent } from './components/business/admin/forms/singleFieldForm/singleFieldForm.component';
-import { ModalComponent } from './components/modals/deleteItemModal/modal.component';
+import { ModalComponent } from './components/modals/modal.component';
+import { EditSubcategoryComponent } from './components/business/workspace/editSubcategory/editSubcategory';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { ModalComponent } from './components/modals/deleteItemModal/modal.compon
     EditCategoryFormComponent,
     SingleFieldFormComponent,
     ModalComponent,
+    EditSubcategoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { EmployeeTableComponent } from './components/business/workspace/employee
 import { ContactComponent } from './components/contact/contact.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RoleGuard } from './guards/role.guard';
+import { EditSubcategoryComponent } from './components/business/workspace/editSubcategory/editSubcategory';
 
 const routes: Routes = [
   { path: 'admin', component: AdminPageComponent, canActivate: [RoleGuard], children: [
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path: 'categories', component: CategoryTableComponent},
     {path: 'categories/add', component: AddCategoryComponent},
     {path: 'categories/edit', component: EditCategoryFormComponent},
+    {path: 'subcategories/edit', component: EditSubcategoryComponent},
   ]},
   { path: '', component: LayoutComponent, children: [
     { path: 'about', component: AboutComponent},

@@ -88,7 +88,10 @@ export class EditCategoryFormComponent implements OnInit {
     }
 
     goToEdit(id: string) {
-        this.router.navigate([`/admin/subcategory/${id}`]);
+        this.router.navigate(
+            ['/admin/subcategories/edit'],
+            { queryParams: { id: `${id}` }}
+        );
     }
 
 }

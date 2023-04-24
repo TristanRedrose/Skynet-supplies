@@ -1,4 +1,4 @@
-@import '../../../vars.scss';
+@import '../../vars.scss';
 
 .modal {
     position: fixed;
@@ -11,7 +11,6 @@
     align-items: center;
     background-color: rgba($royal, 0.6);
     z-index: 1;
-
 }
 
 .modal-content {
