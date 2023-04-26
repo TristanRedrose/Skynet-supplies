@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace SNS_DLA.Core.Repositories
 {
-    public class SubCategoryRepository : GenericRepository<SubCategory>, ISubCategoryRepository
+    public class SubcategoryRepository : GenericRepository<SubCategory>, ISubcategoryRepository
     {
-        public SubCategoryRepository(SNSDbContext context) : base(context)
+        public SubcategoryRepository(SNSDbContext context) : base(context)
         {
 
         }

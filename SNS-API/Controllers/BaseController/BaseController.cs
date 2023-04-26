@@ -7,8 +7,8 @@ namespace SNS_API.Controllers.BaseController
 {
     [ApiController]
     [Route("[controller]")]
-    public class BaseController<TEntity> : ControllerBase  where TEntity : class
-        
+    public class BaseController<TEntity> : ControllerBase where TEntity : class
+
     {
         protected readonly IBaseService<TEntity> _service;
 
@@ -23,11 +23,11 @@ namespace SNS_API.Controllers.BaseController
             var actionSucces = await _service.AddAsync(entity);
             if (actionSucces)
             {
-                return Ok("Item added");
+                return Ok();
             }
-            
-            return BadRequest("Something went wrong");
-            
+
+            return BadRequest();
+
         }
 
         [HttpGet]
@@ -38,9 +38,9 @@ namespace SNS_API.Controllers.BaseController
             {
                 return Ok(categories);
             }
-            
+
             return NotFound();
-            
+
         }
 
         [HttpPatch]
@@ -49,18 +49,18 @@ namespace SNS_API.Controllers.BaseController
             var actionSuccess = await _service.UpdateAsync(entity);
             if (actionSuccess)
             {
-                return Ok("Item updated");
+                return Ok();
             }
-            
-            return BadRequest("Something went wrong");
-            
+
+            return BadRequest();
+
         }
 
         [HttpGet]
-        [Route(":id")]
+        [Route("{id}")]
         public virtual async Task<ActionResult<TEntity>> GetByIdAsync(int id)
         {
-            
+
             var item = await _service.GetByIdAsync(id);
             if (item == null)
             {
@@ -71,16 +71,16 @@ namespace SNS_API.Controllers.BaseController
         }
 
         [HttpDelete]
-        [Route(":id")]
-        public async Task<ActionResult> DeleteAsync(int id)
+        [Route("{id}")]
+        public async Task<ActionResult> DeleteAsync([FromRoute] int id)
         {
             var actionSuccess = await _service.DeleteAsync(id);
             if (actionSuccess)
             {
-                return Ok("Item deleted");
+                return Ok();
             }
 
-            return NotFound("Something went wrong");
+            return NotFound();
 
         }
 

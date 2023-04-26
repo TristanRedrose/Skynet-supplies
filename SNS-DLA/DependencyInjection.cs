@@ -20,7 +20,7 @@ namespace SNS_DLA
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
+            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
 
             return services;
         }

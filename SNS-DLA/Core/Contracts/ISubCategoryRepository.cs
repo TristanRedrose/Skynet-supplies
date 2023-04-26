@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SNS_DLA.Core.Contracts
 {
-    public interface ISubCategoryRepository : IGenericRepository<SubCategory>
+    public interface ISubcategoryRepository : IGenericRepository<SubCategory>
     {
     }
 }

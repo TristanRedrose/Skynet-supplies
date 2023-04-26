@@ -11,7 +11,7 @@ using SNS_DLA.Models.DTO_s.Request;
 using SNS_DLA.Models.Entities;
 using System.Security.Claims;
 using System.Text;
-
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;

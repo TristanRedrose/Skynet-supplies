@@ -26,7 +26,7 @@ namespace SNS_BLA
 
             services.AddScoped<IOrderService, OrderService>();
 
-            services.AddScoped<ISubCategoryService, SubCategoryService>();
+            services.AddScoped<ISubcategoryService, SubcategoryService>();
 
             return services;
         }
