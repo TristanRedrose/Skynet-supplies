@@ -47,12 +47,15 @@ export class EditSubcategoryComponent implements OnInit {
         }
 
         this.subcategoryService
-            .updateSubcategory(updateSubcategoryRequest, this.subcategoryData.categoryId)
+            .updateSubcategory(updateSubcategoryRequest, this.subcategoryData.subcategoryId)
             .pipe(finalize(() => {
                 this.loadingService.hide();
             }))
             .subscribe(() => {
-                this.router.navigate(['/admin/categories']);
+                this.router.navigate(
+                    ['/admin/categories/edit'],
+                    { queryParams: { id: `${this.subcategoryData.categoryId}` }}
+                );
             });
     }
 }
