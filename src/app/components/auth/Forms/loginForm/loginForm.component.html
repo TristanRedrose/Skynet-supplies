@@ -22,7 +22,7 @@
         </div>  
 
         <div *ngIf="isLoading | async" class="fidget-container">
-            <spinner-component [loading]="isLoading | async"></spinner-component>
+            <spinner-component></spinner-component>
         </div>
 
         <input *ngIf="!(isLoading | async)" class="auth-submit-button" type="submit" value="Login">

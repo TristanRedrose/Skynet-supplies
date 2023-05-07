@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { ModalService } from "src/app/services/modal/modal.service";
 
 @Component({
@@ -11,7 +11,9 @@ export class ModalComponent {
 
     modalOpen = this.modalService.modalOpen
 
-    constructor(private modalService: ModalService) {}
+    constructor(
+            private modalService: ModalService,
+        ) {}
 
     closeModal() {
         this.modalService.hide();

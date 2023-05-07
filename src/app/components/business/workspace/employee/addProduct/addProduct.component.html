@@ -1,0 +1,9 @@
+<h3>ADD PRODUCT</h3>
+
+<div *ngIf="!(isLoading | async)" class="form-container">
+    <product-form-component
+        [categories]="categories"
+        (newSubmitEvent)="addProduct($event)"
+    >
+    </product-form-component>
+</div>

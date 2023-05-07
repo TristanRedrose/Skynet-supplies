@@ -1,0 +1,15 @@
+<div *ngIf="!(isLoading | async)" class="products-container">
+    <h3>Products</h3>
+    <div *ngIf=" products.length > 0" class="table-container">
+        <product-table-component 
+            [products]="products"
+            (newRouteEvent)="goToEdit($event)"
+            (newDeleteEvent)="deleteProduct($event)"
+        >
+        </product-table-component>
+    </div>
+
+    <div *ngIf="!(products.length > 0 && !(isLoading | async))">
+        <h4 class="default-text">No products currently listed</h4>
+    </div>
+</div>

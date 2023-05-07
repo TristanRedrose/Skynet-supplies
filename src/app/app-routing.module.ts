@@ -5,19 +5,25 @@ import { AuthComponent } from './components/auth/auth.component';
 import { LoginFormComponent } from './components/auth/Forms/loginForm/loginForm.component';
 import { RegistrationFormComponent } from './components/auth/Forms/registrationForm/registrationForm.component';
 import { AdminPageComponent } from './components/business/admin/admin.component';
-import { AddCategoryComponent } from './components/business/workspace/addCategory/addCategory.component';
-import { EmployeeRegistrationFormComponent } from './components/business/workspace/addEmployee/registrationForm.component';
-import { CategoryTableComponent } from './components/business/workspace/categoryTable/categoryTable.component';
-import { EditCategoryFormComponent } from './components/business/workspace/editCategory/editCategory.component';
-import { EditEmployeeFormComponent } from './components/business/workspace/editEmployee/editEmployee.component';
-import { EmployeeTableComponent } from './components/business/workspace/employeeTable/employeeTable.component';
+import { AddCategoryComponent } from './components/business/workspace/administrator/addCategory/addCategory.component';
+import { EmployeeRegistrationFormComponent } from './components/business/workspace/administrator/addEmployee/registrationForm.component';
+import { CategoryTableComponent } from './components/business/workspace/administrator/categoryTable/categoryTable.component';
+import { EditCategoryFormComponent } from './components/business/workspace/administrator/editCategory/editCategory.component';
+import { EditEmployeeFormComponent } from './components/business/workspace/administrator/editEmployee/editEmployee.component';
+import { EmployeeTableComponent } from './components/business/workspace/administrator/employeeTable/employeeTable.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { RoleGuard } from './guards/role.guard';
-import { EditSubcategoryComponent } from './components/business/workspace/editSubcategory/editSubcategory';
+import { AdminGuard } from './guards/admin.guard';
+import { EmployeeGuard } from './guards/employee.guard';
+import { EditSubcategoryComponent } from './components/business/workspace/administrator/editSubcategory/editSubcategory';
+import { CustomerTableComponent } from './components/business/workspace/employee/customerTable/customerTable.component';
+import { EditCustomerComponent } from './components/business/workspace/employee/editCustomer/editCustomer.component';
+import { AddProductComponent } from './components/business/workspace/employee/addProduct/addProduct.component';
+import { ProductsComponent } from './components/business/workspace/employee/products/products.component';
+import { EditProductComponent } from './components/business/workspace/employee/editProduct/editProduct.component';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminPageComponent, canActivate: [RoleGuard], children: [
+  { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard], children: [
     {path: 'employee', component: EmployeeTableComponent},
     {path: 'employee/add', component: EmployeeRegistrationFormComponent},
     {path: 'employee/edit', component: EditEmployeeFormComponent},
@@ -25,6 +31,13 @@ const routes: Routes = [
     {path: 'categories/add', component: AddCategoryComponent},
     {path: 'categories/edit', component: EditCategoryFormComponent},
     {path: 'subcategories/edit', component: EditSubcategoryComponent},
+  ]},
+  { path: 'employee', component: AdminPageComponent, canActivate: [EmployeeGuard], children: [
+    {path: 'customer', component: CustomerTableComponent},
+    {path: 'customer/edit', component: EditCustomerComponent},
+    {path: 'product/add', component: AddProductComponent},
+    {path: 'product/edit', component: EditProductComponent},
+    {path: 'products', component: ProductsComponent}
   ]},
   { path: '', component: LayoutComponent, children: [
     { path: 'about', component: AboutComponent},

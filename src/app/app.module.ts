@@ -16,19 +16,27 @@ import { LoginFormComponent } from './components/auth/Forms/loginForm/loginForm.
 import { RegistrationFormComponent } from './components/auth/Forms/registrationForm/registrationForm.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminPageComponent } from './components/business/admin/admin.component';
-import { EmployeeRegistrationFormComponent } from './components/business/workspace/addEmployee/registrationForm.component';
-import { EmployeeTableComponent } from './components/business/workspace/employeeTable/employeeTable.component';
+import { EmployeeRegistrationFormComponent } from './components/business/workspace/administrator/addEmployee/registrationForm.component';
+import { EmployeeTableComponent } from './components/business/workspace/administrator/employeeTable/employeeTable.component';
 import { AuthInterceptorService } from './services/auth/authInterceptorService';
 import { SpinnerComponent } from './components/loading/spinner.component';
 import { UserDataForm } from './components/business/admin/forms/userDataForm/userDataForm';
-import { EditEmployeeFormComponent } from './components/business/workspace/editEmployee/editEmployee.component';
+import { EditEmployeeFormComponent } from './components/business/workspace/administrator/editEmployee/editEmployee.component';
 import { CategoryFormComponent } from './components/business/admin/forms/categoryForm/categoryForm.component';
-import { AddCategoryComponent } from './components/business/workspace/addCategory/addCategory.component';
-import { CategoryTableComponent } from './components/business/workspace/categoryTable/categoryTable.component';
-import { EditCategoryFormComponent } from './components/business/workspace/editCategory/editCategory.component';
+import { AddCategoryComponent } from './components/business/workspace/administrator/addCategory/addCategory.component';
+import { CategoryTableComponent } from './components/business/workspace/administrator/categoryTable/categoryTable.component';
+import { EditCategoryFormComponent } from './components/business/workspace/administrator/editCategory/editCategory.component';
 import { SingleFieldFormComponent } from './components/business/admin/forms/singleFieldForm/singleFieldForm.component';
 import { ModalComponent } from './components/modals/modal.component';
-import { EditSubcategoryComponent } from './components/business/workspace/editSubcategory/editSubcategory';
+import { EditSubcategoryComponent } from './components/business/workspace/administrator/editSubcategory/editSubcategory';
+import { UserTableComponent } from './components/tables/userTable/userTable.component';
+import { CustomerTableComponent } from './components/business/workspace/employee/customerTable/customerTable.component';
+import { EditCustomerComponent } from './components/business/workspace/employee/editCustomer/editCustomer.component';
+import { AddProductComponent } from './components/business/workspace/employee/addProduct/addProduct.component';
+import { ProductsComponent } from './components/business/workspace/employee/products/products.component';
+import { ProductTableComponent } from './components/tables/productTable/productTable.component';
+import { ProductFormComponent } from './components/business/admin/forms/productForm/productForm.component';
+import { EditProductComponent } from './components/business/workspace/employee/editProduct/editProduct.component';
 
 
 @NgModule({
@@ -57,6 +65,14 @@ import { EditSubcategoryComponent } from './components/business/workspace/editSu
     SingleFieldFormComponent,
     ModalComponent,
     EditSubcategoryComponent,
+    UserTableComponent,
+    CustomerTableComponent,
+    EditCustomerComponent,
+    AddProductComponent,
+    ProductsComponent,
+    ProductTableComponent,
+    ProductFormComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

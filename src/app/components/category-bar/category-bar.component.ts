@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Category } from "src/app/models/categories/category.models";
+import { CategoryService } from "src/app/services/categories/category.service";
 
 @Component({
     selector: 'category-bar',
@@ -6,6 +8,16 @@ import { Component } from "@angular/core";
     styleUrls: ['./category-bar.component.scss']
 })
 
-export class CategoryBarComponent {
-    
+export class CategoryBarComponent implements OnInit {
+    categories!: Category[];
+
+    constructor( private categoryService: CategoryService){}
+
+    ngOnInit(): void {
+        this.categoryService
+            .getAllCategories()
+            .subscribe(res => {
+                this.categories = res;
+            })
+    }
 }

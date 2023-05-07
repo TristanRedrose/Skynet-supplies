@@ -1,0 +1,105 @@
+@import "../../../../../vars.scss";
+
+h3 {
+    text-align: left;
+    padding-left: 50px;
+}
+
+.group-border {
+    width: 100%;
+    border: none;
+    height: 0.5px;
+    color: $royal;
+    background-color: $royal;
+    margin-bottom: 32px;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+
+    & input {
+        width: 200px;
+    }
+}
+
+.label-box {
+    line-height: 1.4em;
+    width: 225px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & input {
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 24px;
+        border: 1px $royal solid;
+        padding-left: 8px;
+
+        &.ng-touched.ng-invalid {
+            border: 1px red solid;
+        }
+    
+        &:hover {
+            border: 1px gray solid;
+        }
+    
+        &:focus {
+            outline: none;
+            border: 1px $blue solid;
+            box-shadow: 0px 0px 4px 1px rgba(18,20,20,0.6);
+        }
+    }
+
+    & select {
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 24px;
+        border: 1px $royal solid;
+        padding-left: 4px;
+        width: 150px;
+        margin-bottom: 8px;
+    }
+}
+
+option:hover {
+    box-shadow: 0 0 10px 100px $yellow-shade inset;
+}
+
+.product-submit-button {
+    margin-top: 8px;
+    width: 120px;
+    align-self: center;
+    border-radius: 8px;
+    border: 1px $royal solid;
+    height: 32px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lightgray;
+    }
+
+    &:active {
+        background-color: $royal;
+        border: 1px $yellow-shade solid;
+        color: snow;
+    }
+}
+
+.product-error {
+    padding-left: 50px;
+
+    & p {
+        color: red;
+        font-size: 12px;
+        line-height: 1.6em;
+    }
+}

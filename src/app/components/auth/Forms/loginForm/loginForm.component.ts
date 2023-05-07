@@ -53,7 +53,7 @@ export class LoginFormComponent implements OnInit {
             }))
             .subscribe(() => {
                 if (this.sessionService.role && this.validRoles.includes(this.sessionService.role)) {
-                    this.router.navigate(['admin'])
+                    this.router.navigate([`${this.sessionService.role.toLowerCase()}`])
                     return;
                 }
 

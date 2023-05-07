@@ -1,0 +1,63 @@
+<form *ngIf="categories" class="product-form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <h4>Product category</h4>
+    <hr class="group-border">
+
+    <div class="input-area">
+        <div class="label-box">
+            <label for="category">Category:</label>
+        </div>
+
+        <select class="form-select" id="category" formControlName="category" (change)='onCategorySelected()'>
+            <option hidden value="null" disabled selected>Select category</option>
+            <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.name }}</option>
+        </select>
+
+        <div class="label-box">
+            <label for="subcategory">Subcategory:</label>
+        </div>
+
+        <select class="form-select" id="subcategory" formControlName="subcategory">
+            <option hidden value="null" disabled selected>Select subcategory</option>
+            <option *ngFor="let subcategory of subcategories" [value]="subcategory.subcategoryId">{{ subcategory.name }}</option>
+        </select>
+    </div>       
+
+    <h4>Product data</h4>
+    <hr class="group-border">
+    
+    <div class="input-area">
+        <div class="label-box">
+            <label for="name">Product name:</label>
+        </div>
+
+        <input class="product-form-input" id="name" type="text" formControlName="name" placeholder="Name">
+    </div>
+
+    <div class="input-area">
+        <div class="label-box">
+            <label for="price">Price:</label>
+        </div>
+
+        <input class="product-form-input" id="price" type="number" min="0.01" formControlName="price" placeholder="Price">
+    </div>
+
+    <div class="label-box">
+        <label for="subcategory">Product status:</label>
+    </div>
+    
+    <select class="form-select" id="available" formControlName="available">
+        <option hidden value="null" disabled selected>Select status</option>
+        <option [ngValue]="true">Available</option>
+        <option [ngValue]="false">Unavailable</option>
+    </select>
+
+    <div class="input-area">
+        <div class="label-box">
+            <label for="description">Description:</label>
+        </div>
+
+        <textarea class="product-form-textarea" id="description" formControlName="description" placeholder="Description" maxlength="1500"></textarea>
+    </div>
+
+    <button class="product-submit-button" type="submit">Submit</button>
+</form>

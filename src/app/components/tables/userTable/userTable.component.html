@@ -1,0 +1,48 @@
+<modal-component *ngIf="userData">
+    <h4>Are you sure you want to remove user: {{userData.name}} {{userData.surname}}?</h4>
+    <div class="modal-button-container">
+        <button class="edit-button" (click)="closeModal()">Close</button>
+        <button class="delete-button" (click)="deleteUser(userData.id)">Delete</button>
+    </div>
+</modal-component>
+
+<table class="user-table">
+    <thead class="table-head">
+        <tr>
+            <th>
+                NAME
+            </th>
+            <th>
+                SURNAME
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                EDIT
+            </th>
+            <th>
+                DELETE
+            </th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let user of users" class="table-body">
+        <tr>
+            <td>
+                {{user.name}}
+            </td>
+            <td>
+                {{user.surname}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <td class="button-box">
+                <button class="edit-button" (click)="goToEdit(user.id)">Edit</button>
+            </td>
+            <td class="button-box">
+                <button class="delete-button" type="text" (click)="openModal(user)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

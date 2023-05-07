@@ -5,7 +5,7 @@
                 <img src="../../../../assets/images/favicon.png" alt="logo" class="dashboard-logo">
                 <h3>Skynet Supplies</h3>
             </div>
-            <div class="taskgroup-container">
+            <div *ngIf="(role === 'Admin')" class="taskgroup-container">
                 <h4>Auth</h4>
                 <a routerLink="employee" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
                     Employees
@@ -14,7 +14,7 @@
                     Add employee
                 </a>
             </div>
-            <div class="taskgroup-container">
+            <div *ngIf="(role === 'Admin')" class="taskgroup-container">
                 <h4>Categories</h4>
                 <a routerLink="categories" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
                     Categories
@@ -23,12 +23,40 @@
                     Add category
                 </a>
             </div>
+            <div *ngIf="(role === 'Employee')" class="taskgroup-container">
+                <h4>Auth</h4>
+                <a routerLink="customer" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
+                    Customers
+                </a>
+            </div>
+            <div *ngIf="(role === 'Employee')" class="taskgroup-container">
+                <h4>Products</h4>
+                <a routerLink="products" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
+                    Products
+                </a>
+                <a routerLink="product/add" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
+                    Add product
+                </a>
+            </div>
+            <div *ngIf="(role === 'Employee')" class="taskgroup-container">
+                <h4>Orders</h4>
+                <a routerLink="order" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
+                    Orders
+                </a>
+            </div>
         </div>
         <div class="main-panel">
             <div class="profile-panel">
-
+                <h5>Welcome {{name}} </h5>
+                <div (click)="logOut()">
+                    <a routerLinkActive="nav-active" class="logout-link">
+                        Logout
+                        <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
+                    </a>
+                </div>
             </div>
             <div class="workspace">
+                <spinner-component></spinner-component>
                 <router-outlet></router-outlet>
             </div>
         </div>

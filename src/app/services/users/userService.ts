@@ -28,6 +28,23 @@ export class UserService {
             }));
     }
 
+    getAllCustomers(): Observable<User[]>{
+        return this.http.get<User[]>("https://localhost:7046/User/Customer").pipe(
+            map((res: User[]) => {
+                return res
+            }),
+            catchError((error: HttpErrorResponse) => {
+                let errorMessage= '';
+                if (error.error instanceof ErrorEvent) {
+                    errorMessage = `Error ${error.error.message}`;
+                }
+                 else {
+                    errorMessage = `Error code ${error.status}; message: ${error}`;
+                }
+                return throwError(() => new Error(errorMessage));
+            }));
+    }
+
     deleteUser(id: string): Observable<void> {
         return this.http.delete<void>(`https://localhost:7046/User/${id}`);
     }
