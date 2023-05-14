@@ -12,6 +12,8 @@ namespace SNS_DLA.Models.DTO_s.Request
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
-        public int SubCategoryId { get; set; }
+        public string ImageUrl { get; set; }
+        public int SubcategoryId { get; set; }
+        public bool Available { get; set; }
     }
 }

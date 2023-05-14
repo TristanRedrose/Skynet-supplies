@@ -266,6 +266,10 @@ namespace SNSDLA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -273,12 +277,12 @@ namespace SNSDLA.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int>("SubCategoryId")
+                    b.Property<int>("SubcategoryId")
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("SubCategoryId");
+                    b.HasIndex("SubcategoryId");
 
                     b.ToTable("Products");
                 });
@@ -460,13 +464,13 @@ namespace SNSDLA.Migrations
 
             modelBuilder.Entity("SNS_DLA.Models.Entities.Product", b =>
                 {
-                    b.HasOne("SNS_DLA.Models.Entities.SubCategory", "SubCategory")
+                    b.HasOne("SNS_DLA.Models.Entities.SubCategory", "Subcategory")
                         .WithMany("Products")
-                        .HasForeignKey("SubCategoryId")
+                        .HasForeignKey("SubcategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("SubCategory");
+                    b.Navigation("Subcategory");
                 });
 
             modelBuilder.Entity("SNS_DLA.Models.Entities.SubCategory", b =>

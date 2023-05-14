@@ -4,6 +4,8 @@ using SNS_BLA.Services.ProductService;
 using SNS_DLA.Models.DTO_s.Request;
 using SNS_DLA.Models.DTO_s.Response;
 using SNS_DLA.Models.Entities;
+using SNS_DLA.Models.Filters;
+using SNS_DLA.Models.PaginationFilter;
 
 namespace SNS_API.Controllers
 {
@@ -20,11 +22,18 @@ namespace SNS_API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<ProductResponse>>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<ProductWithCategoryResponse>>> GetAllAsync
+            (
+                [FromQuery] PaginationFilter paginationFilter,
+                [FromQuery] CategoryFilter categoriesFilter
+            )
         {
             try
             {
-                var allProducts = await _productService.GetAllAsync();
+                var categoryFilter = new CategoryFilter(categoriesFilter.CategoryName, categoriesFilter.SubcategoryName);
+                var pageFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.ItemsPerPage);
+
+                var allProducts = await _productService.GetAllProductData(pageFilter, categoryFilter);
 
                 return Ok(allProducts);
             }

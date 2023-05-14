@@ -12,10 +12,10 @@ namespace SNS_DLA.Models.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        public string ImageUrl { get; set; }
         public bool Available { get; set; }
-
-        public int SubCategoryId { get; set; }
-        public SubCategory SubCategory { get; set; }
+        public int SubcategoryId { get; set; }
+        public SubCategory Subcategory { get; set; }
 
 
     }

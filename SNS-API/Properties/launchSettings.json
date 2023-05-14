@@ -13,7 +13,6 @@
     },
     "https": {
       "commandName": "Project",
-      "commandLineArgs": "\r\n",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {

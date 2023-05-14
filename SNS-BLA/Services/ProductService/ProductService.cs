@@ -4,6 +4,8 @@ using SNS_DLA.Core.IConfiguration;
 using SNS_DLA.Models.DTO_s.Request;
 using SNS_DLA.Models.DTO_s.Response;
 using SNS_DLA.Models.Entities;
+using SNS_DLA.Models.Filters;
+using SNS_DLA.Models.PaginationFilter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +30,11 @@ namespace SNS_BLA.Services.ProductService
             var newProduct = new Product
             {
                 Name = request.Name,
-                SubCategoryId = request.SubCategoryId,
+                SubcategoryId = request.SubcategoryId,
                 Description = request.Description,
                 Price = request.Price,
-                Available = true,
+                Available = request.Available,
+                ImageUrl= request.ImageUrl,
             };
 
             var result = await _repository.AddAsync(newProduct);
@@ -60,11 +63,13 @@ namespace SNS_BLA.Services.ProductService
             {
                 var productResponse = new ProductResponse
                 {
+                    ProductId = product.ProductId,
                     Name = product.Name,
-                    SubCategoryId = product.SubCategoryId,
+                    SubcategoryId = product.SubcategoryId,
                     Available = product.Available,
                     Description = product.Description,
                     Price = product.Price,
+                    ImageUrl = product.ImageUrl,
                 };
 
                 productsResponse.Add(productResponse);
@@ -84,7 +89,8 @@ namespace SNS_BLA.Services.ProductService
                 Description = product.Description,
                 Price = product.Price,
                 Available = product.Available,
-                SubCategoryId = product.SubCategoryId,
+                SubcategoryId = product.SubcategoryId,
+                ImageUrl = product.ImageUrl,
             };
 
             return productResponse;
@@ -97,11 +103,40 @@ namespace SNS_BLA.Services.ProductService
             product.Name = request.Name;
             product.Description = request.Description;
             product.Price = request.Price;
-            product.SubCategoryId = request.SubCategoryId;
+            product.Available = request.Available;
+            product.ImageUrl = request.ImageUrl;
 
             var result = await _repository.UpsertAsync(product);
+            await _unitOfWork.CompleteAsync();
 
             return result;
+        }
+
+        public async Task<IEnumerable<ProductWithCategoryResponse>> GetAllProductData(PaginationFilter paginationFilter, CategoryFilter categoryFilter)
+        {
+            var productDetails = await _repository.GetAllProductData(paginationFilter, categoryFilter);
+
+            var allProductsResponse = new List<ProductWithCategoryResponse>();
+
+            foreach (var product in productDetails)
+            {
+                var productResponse = new ProductWithCategoryResponse
+                {
+                    Price = product.Price,
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    ImageUrl = product.ImageUrl,
+                    Available = product.Available,
+                    Description = product.Description,
+                    SubcategoryId = product.SubcategoryId,
+                    SubcategoryName = product.Subcategory.Name,
+                    CategoryName = product.Subcategory.Category.Name
+                };
+
+                allProductsResponse.Add(productResponse);
+            }
+
+            return allProductsResponse;
         }
     }
 }
