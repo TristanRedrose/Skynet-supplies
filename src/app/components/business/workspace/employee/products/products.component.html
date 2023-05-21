@@ -12,4 +12,10 @@
     <div *ngIf="!(products.length > 0 && !(isLoading | async))">
         <h4 class="default-text">No products currently listed</h4>
     </div>
+    <div class="pagination-container">
+        <pagination-component
+        [productCount]="productCount"
+        >
+        </pagination-component>
+    </div>
 </div>

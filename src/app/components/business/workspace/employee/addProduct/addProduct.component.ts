@@ -49,7 +49,7 @@ export class AddProductComponent implements OnInit  {
                 this.loadingService.hide();
             }))
             .subscribe(() => {
-                this.router.navigate(['employee/products'])
+                this.router.navigate(['employee/products'], {queryParams: {page: 1, itemsPerPage: 12}})
             });
     }
 

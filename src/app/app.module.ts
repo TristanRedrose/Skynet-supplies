@@ -37,6 +37,9 @@ import { ProductsComponent } from './components/business/workspace/employee/prod
 import { ProductTableComponent } from './components/tables/productTable/productTable.component';
 import { ProductFormComponent } from './components/business/admin/forms/productForm/productForm.component';
 import { EditProductComponent } from './components/business/workspace/employee/editProduct/editProduct.component';
+import { ProductBoxComponent } from './components/product/productBox/productBox.component';
+import { ProductShowcaseComponent } from './components/product/productShowcase/productShowcase.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { EditProductComponent } from './components/business/workspace/employee/e
     ProductTableComponent,
     ProductFormComponent,
     EditProductComponent,
+    ProductBoxComponent,
+    ProductShowcaseComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,7 @@ import { EditCustomerComponent } from './components/business/workspace/employee/
 import { AddProductComponent } from './components/business/workspace/employee/addProduct/addProduct.component';
 import { ProductsComponent } from './components/business/workspace/employee/products/products.component';
 import { EditProductComponent } from './components/business/workspace/employee/editProduct/editProduct.component';
+import { ProductShowcaseComponent } from './components/product/productShowcase/productShowcase.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard], children: [
@@ -40,6 +41,8 @@ const routes: Routes = [
     {path: 'products', component: ProductsComponent}
   ]},
   { path: '', component: LayoutComponent, children: [
+    { path: '', component: ProductShowcaseComponent},
+    { path: 'products', component: ProductShowcaseComponent},
     { path: 'about', component: AboutComponent},
     { path: 'contact', component: ContactComponent},
     { path: 'auth', component: AuthComponent, children: [

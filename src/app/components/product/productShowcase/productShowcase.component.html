@@ -1,0 +1,14 @@
+<div class="product-showcase">
+    <div *ngIf="products" class="products-container">
+        <div *ngFor="let product of products">
+            <product-box-component
+                [product]="product"
+            >
+            </product-box-component>
+        </div>
+    </div>
+    <pagination-component *ngIf="productCount"
+        [productCount]="productCount"
+    >
+    </pagination-component>
+</div>

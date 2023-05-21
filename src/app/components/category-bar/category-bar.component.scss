@@ -31,10 +31,16 @@
     display: flex;
     align-items: center;
     font-size: .79012em;
+
     &:hover {
         background-color: $yellow-shade;
         color: black;
         cursor: pointer;
+    }
+
+    &.yellow-background {
+        background-color: $yellow-shade;
+        color: black;
     }
 }
 

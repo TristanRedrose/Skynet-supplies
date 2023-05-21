@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ProductRequest } from "src/app/models/products/productRequest.type";
 import { Product } from "src/app/models/products/product.type";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { Observable, catchError, map, throwError } from "rxjs";
+import { ProductResponse } from "src/app/models/products/productResponse.type";
 
 @Injectable({
     providedIn: 'root',
@@ -16,9 +17,10 @@ export class ProductService {
         return this.http.post<void>('https://localhost:7046/Product', request);
     }
 
-    getAllProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>('https://localhost:7046/Product').pipe(
-            map((res: Product[]) => {
+    getAllProducts(filters: HttpParams): Observable<ProductResponse> {
+        
+        return this.http.get<ProductResponse>('https://localhost:7046/Product', {params: filters} ).pipe(
+            map((res: ProductResponse) => {
                 return res;
             }),
             catchError((error: HttpErrorResponse) => {

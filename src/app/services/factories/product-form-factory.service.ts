@@ -15,6 +15,7 @@ export class ProductFormFactory {
             subcategory: new FormControl({value: null, disabled: true}, Validators.required),
             name: new FormControl(null, Validators.required),
             description: new FormControl(null, Validators.required),
+            imageUrl: new FormControl(null, Validators.required),
             price: new FormControl(null, Validators.required),    
             available: new FormControl(null, Validators.required),
         });

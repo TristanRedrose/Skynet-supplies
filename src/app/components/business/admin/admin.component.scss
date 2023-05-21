@@ -85,7 +85,8 @@
 }
 
 .workspace {
-    min-height: 681px;
+    height: 681px;
+    overflow-y: scroll;
 }
 
 .nav-icon {

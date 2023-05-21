@@ -32,7 +32,7 @@ export class ProductFormComponent implements OnInit {
         this.productForm = this.productFormFactory.productDataForm();
 
         if (this.productData && this.categories) {
-            const {subcategoryId, name, price, description, available} = this.productData;
+            const {subcategoryId, name, price, description, imageUrl, available} = this.productData;
 
             const productCategory = this.categories.find(category => category.subcategories.some(subcategory => subcategory.subcategoryId === subcategoryId));
 
@@ -47,6 +47,7 @@ export class ProductFormComponent implements OnInit {
             this.subcategoryControl.patchValue(subcategoryId);
             this.nameControl.patchValue(name);
             this.priceControl.patchValue(price),
+            this.imageControl.patchValue(imageUrl),
             this.descriptionControl.patchValue(description);
             this.availableControl.patchValue(available);      
         }
@@ -79,6 +80,7 @@ export class ProductFormComponent implements OnInit {
             subcategoryId: this.subcategoryControl.value,
             name: this.nameControl.value,
             description: this.descriptionControl.value,
+            imageUrl: this.imageControl.value,
             price: this.priceControl.value,
             available: this.availableControl.value,
         }
@@ -100,6 +102,10 @@ export class ProductFormComponent implements OnInit {
 
     get descriptionControl(): AbstractControl {
         return this.productForm.controls['description'];
+    }
+
+    get imageControl(): AbstractControl {
+        return this.productForm.controls['imageUrl'];
     }
 
     get priceControl(): AbstractControl {

@@ -31,7 +31,7 @@
             </div>
             <div *ngIf="(role === 'Employee')" class="taskgroup-container">
                 <h4>Products</h4>
-                <a routerLink="products" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
+                <a routerLink="products" [queryParams]="{page: 1, itemsPerPage: 12}" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">
                     Products
                 </a>
                 <a routerLink="product/add" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}">

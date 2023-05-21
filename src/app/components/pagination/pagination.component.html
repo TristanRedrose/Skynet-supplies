@@ -1,0 +1,21 @@
+<div class="pagination">
+    <div class="pagination-menu-container">
+        <div class="button-box">
+            <button *ngIf="page > 1" class="pagination-button" (click)="previousPage()">
+                <img class="pagination-arrow" src="../../../assets/icons/left-arrow.png">
+            </button>
+        </div>
+        <h5>Items {{((page-1) * itemsPerPage) + 1}} - {{(page * itemsPerPage) < productCount ? (page * itemsPerPage) : productCount}} of {{productCount}}</h5>
+        <div class="button-box">
+            <button *ngIf="(page * itemsPerPage) < productCount" class="pagination-button" (click)="nextPage()">
+                <img class="pagination-arrow right" src="../../../assets/icons/left-arrow.png">
+            </button>
+        </div>
+    </div>
+    <div class="item-count-selector-container" *ngIf="productCount > 12">
+        <label for="items-per-page">Items per page:</label> 
+        <select id="items-per-page" name="Items" (change)="setCount($event.target)">
+            <option *ngFor='let count of itemCounts' value="{{count}}" [selected]="count == itemsPerPage">{{count}}</option> 
+        </select>
+    </div>
+</div>

@@ -1,6 +1,12 @@
 <div class="b-category-bar">
     <div class="b-category-bar__content">
-        <div *ngFor="let category of categories" class="b-category-bar__navtext">
+        <div 
+            *ngFor="let category of categories" 
+            class="b-category-bar__navtext" 
+            routerLink="/products" 
+            [queryParams]="{page: 1, itemsPerPage: itemCount, category: category.name}"
+            routerLinkActive="yellow-background"
+        >
             {{category.name}}
         </div>
     </div>
