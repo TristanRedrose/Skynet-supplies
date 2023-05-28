@@ -16,7 +16,6 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
     products!: Product[];
     productCount: number = 0;
     subscription!: Subscription;
-    category: string = "";
 
     constructor(
         private productService: ProductService,
@@ -31,7 +30,6 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
             
             if (params['category']){
                 filters = filters.append("category", params['category']);
-                this.category = params['category'];
             }                            
 
             if (params['subcategory']) {

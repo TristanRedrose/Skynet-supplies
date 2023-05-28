@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { Category } from "src/app/models/categories/category.models";
+import { Subscription, finalize } from "rxjs";
+import { SubCategory } from "src/app/models/categories/category.models";
+import { Category} from "src/app/models/categories/category.models";
 import { CategoryService } from "src/app/services/categories/category.service";
 
 @Component({
@@ -14,6 +15,8 @@ export class CategoryBarComponent implements OnInit, OnDestroy {
     categories!: Category[];
     itemCount: number = 12;
     subscription!: Subscription;
+    selectedCategory: Category | null = null;
+    menuOpen: boolean = false;
 
     constructor( 
         private categoryService: CategoryService,
@@ -21,21 +24,45 @@ export class CategoryBarComponent implements OnInit, OnDestroy {
     ){}
 
     ngOnInit(): void {
-
         this.categoryService
             .getAllCategories()
+            .pipe(finalize(() => {
+                if (this.categories) {
+                    this.resolveParams()
+                }
+            }))
             .subscribe(res => {
                 this.categories = res;
             })
-        
+    }
+
+    resolveParams(): void {
         this.subscription = this.route.queryParams.subscribe(params => {
+            this.selectedCategory = null;
+            this.closeMenu();
+
             if (params['itemsPerPage']) {
                 this.itemCount = params['itemsPerPage'];
+            }
+            if (params['category']) {
+                let category = this.categories.find(category => category.name === params['category']);
+                if (category) {
+                    this.selectedCategory = category;
+                }
+                console.log(this.selectedCategory)
             }
         })
     }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+    }
+
+    toggleMenu(): void {
+        this.menuOpen= !this.menuOpen;
+    }
+
+    closeMenu(): void {
+        this.menuOpen = false;
     }
 }
