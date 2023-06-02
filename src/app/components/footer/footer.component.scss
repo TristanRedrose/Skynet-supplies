@@ -28,9 +28,9 @@ footer {
     width: 100%;
     max-width: 1440px;
     box-sizing: border-box;
-    min-height: 235px;
     margin: 0 auto;
     display: flex;
+    padding-bottom: 32px;
 }
 
 .b-footer-info__container {
@@ -40,12 +40,4 @@ footer {
     width: 50%;
     padding: 16px;
     color: snow;
-
-    & h3 {
-        font-size: 20px;
-    }
-
-    & p {
-        font-size: 16px;
-    }
 }

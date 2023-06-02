@@ -1,16 +1,26 @@
-  <div class="product-showcase">
-    <div *ngIf="products" class="products-container">
-        <div *ngFor="let product of products">
-            <product-box-component
-                [product]="product"
-            >
-            </product-box-component>
-        </div>
-    </div>
-    <pagination-component *ngIf="productCount"
-        [productCount]="productCount"
-    >
-    </pagination-component>
+<div *ngIf="loading$ | async" class="loading-container">
+    <spinner-component></spinner-component>
 </div>
+<h3 class="showcase-text" *ngIf="searchText">Results for search: <span>{{ searchText }}</span></h3>
+<div *ngIf="!(loading$ | async) && products.length < 1" class="loading-container">
+    <img class="no-product-image" src="../../../../assets/images/noProdFound.webp" alt="no-product-found">
+</div>
+<div *ngIf="!(loading$ | async) && products.length">
+    <div class="product-showcase">
+        <div *ngIf="products" class="products-container">
+            <div *ngFor="let product of products">
+                <product-box-component
+                    [product]="product"
+                >
+                </product-box-component>
+            </div>
+        </div>
+        <pagination-component *ngIf="productCount"
+            [productCount]="productCount"
+        >
+        </pagination-component>
+    </div>
+</div>
+
 
 

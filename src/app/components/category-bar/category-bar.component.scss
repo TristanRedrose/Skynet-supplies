@@ -30,7 +30,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    font-size: .79012em;
+    font-size: 0.8rem;
 
     &:hover {
         background-color: $yellow-shade;
@@ -92,4 +92,20 @@
     height: 24px;
     width: 24px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 640px) {
+    .b-category-bar__content {
+        height: fit-content;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 8px;
+        justify-items: center;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .b-category-bar__navtext {
+        font-size: 0.7rem;
+    }
 }

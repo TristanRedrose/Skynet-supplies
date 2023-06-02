@@ -3,7 +3,7 @@ import { Subscription, finalize } from "rxjs";
 import { Product } from "src/app/models/products/product.type";
 import { LoadingService } from "src/app/services/loading/loading.service";
 import { ProductService } from "src/app/services/products/product.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpParams } from "@angular/common/http";
 
 @Component ({
@@ -16,17 +16,26 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
     products!: Product[];
     productCount: number = 0;
     subscription!: Subscription;
+    loading$ = this.loadingService.loading$;
+    searchText: string = '';
 
     constructor(
         private productService: ProductService,
         private loadingService: LoadingService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) {}
 
     ngOnInit(): void {
         this.subscription = this.route.queryParams.subscribe(params => {
-            let filters = new HttpParams().append("page", params['page'] ? params['page'] : 1)
-                                        .append("itemsPerPage", params['itemsPerPage'] ? params['itemsPerPage'] : 12)
+            this.searchText = ''
+            let filters = new HttpParams()
+                            .append("page", params['page'] ? params['page'] : 1)
+                            .append("itemsPerPage", params['itemsPerPage'] ? params['itemsPerPage'] : 12);
+            
+            if (params['search']){
+                filters = filters.append("search", params['search']);
+                this.searchText = params['search'];
+            }                       
             
             if (params['category']){
                 filters = filters.append("category", params['category']);

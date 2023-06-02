@@ -66,3 +66,33 @@
     border-radius: 50%;
     z-index: -1;
 }
+
+.search-bar-container {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15%;
+}
+
+@media only screen and (max-width: 920px) {
+    .search-bar-container {
+        padding-right: 7.5%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .b-header__circle-decorator {
+        bottom: -20px;
+        height: 60px;
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .b-header__circle-decorator {
+        bottom: -15px;
+        height: 45px;
+        width: 125px;
+    }
+}

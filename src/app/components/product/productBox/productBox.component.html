@@ -1,10 +1,10 @@
 <div class="product-container">
     <div class="product-image-container">
-        <img class="product-image" src="{{ product.imageUrl }}" alt="product">
+        <img class="product-image" src="{{ product.imageUrl }}" alt="product" (click)="goToProduct(product.productId)">
     </div>
     <div class="product-organiser">
         <div class="product-info-container">
-            <div class="text-box">
+            <div class="text-box product-name" (click)="goToProduct(product.productId)">
                 <h4>{{ product.name }}</h4>
             </div>
             <div class="text-box">

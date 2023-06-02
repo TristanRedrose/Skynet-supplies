@@ -40,6 +40,8 @@ import { EditProductComponent } from './components/business/workspace/employee/e
 import { ProductBoxComponent } from './components/product/productBox/productBox.component';
 import { ProductShowcaseComponent } from './components/product/productShowcase/productShowcase.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ProductDetailsComponent } from './components/product/productDetails/productDetails';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -78,7 +80,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     EditProductComponent,
     ProductBoxComponent,
     ProductShowcaseComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProductDetailsComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

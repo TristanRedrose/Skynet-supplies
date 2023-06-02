@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { Router } from "@angular/router";
 import { Product } from "src/app/models/products/product.type";
 
 @Component({
@@ -9,4 +10,12 @@ import { Product } from "src/app/models/products/product.type";
 
 export class ProductBoxComponent {
     @Input() product!: Product;
+
+    constructor(
+        private router: Router
+    ) {}
+
+    goToProduct(id: string): void {
+        this.router.navigate(['/product'], {queryParams: {id: id}})
+    }
 }

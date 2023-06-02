@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class="category-bar__decorator"></div>
-<div *ngIf="selectedCategory" class="subcategory-menu">
+<div *ngIf="selectedCategory && !(loading$ | async)" class="subcategory-menu">
     <img *ngIf="!menuOpen" class="subcategory-menu-icon" src="../../../../assets/icons/grid.png" (click)="toggleMenu()">
     <img *ngIf="menuOpen" class="subcategory-menu-icon" src="../../../../assets/icons/category.png" (click)="toggleMenu()">
     <div *ngIf="menuOpen" class="b-subcategory-container">

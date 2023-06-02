@@ -4,6 +4,7 @@ import { Subscription, finalize } from "rxjs";
 import { SubCategory } from "src/app/models/categories/category.models";
 import { Category} from "src/app/models/categories/category.models";
 import { CategoryService } from "src/app/services/categories/category.service";
+import { LoadingService } from "src/app/services/loading/loading.service";
 
 @Component({
     selector: 'category-bar',
@@ -17,10 +18,12 @@ export class CategoryBarComponent implements OnInit, OnDestroy {
     subscription!: Subscription;
     selectedCategory: Category | null = null;
     menuOpen: boolean = false;
+    loading$ = this.loadingService.loading$;
 
     constructor( 
         private categoryService: CategoryService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private loadingService: LoadingService
     ){}
 
     ngOnInit(): void {
