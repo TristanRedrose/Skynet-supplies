@@ -5,7 +5,6 @@ using SNS_DLA.Models.DTO_s.Request;
 using SNS_DLA.Models.DTO_s.Response;
 using SNS_DLA.Models.Entities;
 using SNS_DLA.Models.Filters;
-using SNS_DLA.Models.PaginationFilter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,15 +111,15 @@ namespace SNS_BLA.Services.ProductService
             return result;
         }
 
-        public async Task<IEnumerable<ProductWithCategoryResponse>> GetAllProductData(PaginationFilter paginationFilter, CategoryFilter categoryFilter)
+        public async Task<ProductsWithCategoryResponse> GetAllProductData(Filters filters)
         {
-            var productDetails = await _repository.GetAllProductData(paginationFilter, categoryFilter);
+            var productDetails = await _repository.GetProductsWithCategory(filters);
 
-            var allProductsResponse = new List<ProductWithCategoryResponse>();
+            var allProducts = new List<ProductWithCategory>();
 
-            foreach (var product in productDetails)
+            foreach (var product in productDetails.Products)
             {
-                var productResponse = new ProductWithCategoryResponse
+                var productResponse = new ProductWithCategory
                 {
                     Price = product.Price,
                     ProductId = product.ProductId,
@@ -133,8 +132,14 @@ namespace SNS_BLA.Services.ProductService
                     CategoryName = product.Subcategory.Category.Name
                 };
 
-                allProductsResponse.Add(productResponse);
+                allProducts.Add(productResponse);
             }
+
+            var allProductsResponse = new ProductsWithCategoryResponse
+            {
+                Products = allProducts,
+                ProductCount = productDetails.ProductCount,
+            };
 
             return allProductsResponse;
         }

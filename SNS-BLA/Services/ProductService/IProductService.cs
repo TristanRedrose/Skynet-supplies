@@ -3,7 +3,6 @@ using SNS_DLA.Models.DTO_s.Request;
 using SNS_DLA.Models.DTO_s.Response;
 using SNS_DLA.Models.Entities;
 using SNS_DLA.Models.Filters;
-using SNS_DLA.Models.PaginationFilter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +23,6 @@ namespace SNS_BLA.Services.ProductService
 
         Task<bool> UpdateAsync(int id, ProductRequest request);
 
-        Task<IEnumerable<ProductWithCategoryResponse>> GetAllProductData(PaginationFilter paginationFilter, CategoryFilter categoryFilter);
+        Task<ProductsWithCategoryResponse> GetAllProductData(Filters filters);
     }
 }

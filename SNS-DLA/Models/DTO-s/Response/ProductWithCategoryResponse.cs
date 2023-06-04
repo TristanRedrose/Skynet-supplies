@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SNS_DLA.Models.DTO_s.Response
 {
-    public class ProductWithCategoryResponse
+    public class ProductWithCategory 
     {
         public int ProductId { get; set; }
         public string Name { get; set; }
@@ -17,5 +17,11 @@ namespace SNS_DLA.Models.DTO_s.Response
         public int SubcategoryId { get; set; }
         public string CategoryName { get; set; }
         public string SubcategoryName { get; set; }
+    }
+
+    public class ProductsWithCategoryResponse
+    {
+        public List<ProductWithCategory> Products { get; set; }
+        public int ProductCount { get; set; }
     }
 }

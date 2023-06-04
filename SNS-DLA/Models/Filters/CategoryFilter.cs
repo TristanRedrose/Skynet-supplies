@@ -8,22 +8,22 @@ namespace SNS_DLA.Models.Filters
 {
     public class CategoryFilter
     {
-        public string CategoryName { get; set; }
-        public string SubcategoryName { get; set; }
+        public string Category { get; set; }
+        public string Subcategory { get; set; }
         public CategoryFilter()
         {
-            this.CategoryName = string.Empty;
-            this.SubcategoryName = string.Empty;
+            Category = string.Empty;
+            Subcategory = string.Empty;
         }
         public CategoryFilter(string categoryName)
         {
-            CategoryName = categoryName;
-            SubcategoryName = string.Empty;
+            Category = categoryName;
+            Subcategory = string.Empty;
         }
         public CategoryFilter(string categoryName, string subcategoryName)
         {
-            CategoryName = categoryName;
-            SubcategoryName = subcategoryName;
+            Category = categoryName;
+            Subcategory = subcategoryName;
         }
     }
 }
