@@ -1,0 +1,19 @@
+<modal-component>
+    <div class="product-order__info-container">
+        <div class="order-modal__image-container">
+            <img class="order-product-image" src="{{ product.imageUrl }}" alt="product">
+        </div>
+        <h3>{{ product.name }}</h3>
+        <div class="quantity-selector__container">
+            <button class="order-quantity-button" (click)="decrementQuantity()">-</button>
+            <div class="quantity-counter">
+                {{ quantity }}
+            </div>
+            <button class="order-quantity-button" (click)="incrementQuantity()">+</button>
+        </div>
+        <div class="buttons__container">
+            <button class="order-button order-button__accept" (click)="addToOrder()">Add to cart</button>
+            <button class="order-button order-button__cancel" (click)="closeModal()">Return</button>
+        </div>
+    </div>
+</modal-component>

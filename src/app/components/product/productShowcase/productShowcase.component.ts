@@ -5,6 +5,7 @@ import { LoadingService } from "src/app/services/loading/loading.service";
 import { ProductService } from "src/app/services/products/product.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpParams } from "@angular/common/http";
+import { ModalService } from "src/app/services/modal/modal.service";
 
 @Component ({
     selector: 'product-showcase-component',
@@ -18,11 +19,13 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
     subscription!: Subscription;
     loading$ = this.loadingService.loading$;
     searchText: string = '';
+    modalProduct!: Product;
 
     constructor(
         private productService: ProductService,
         private loadingService: LoadingService,
         private route: ActivatedRoute,
+        private modalService: ModalService,
     ) {}
 
     ngOnInit(): void {
@@ -65,5 +68,10 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
                 this.products = res.products;
                 this.productCount = res.productCount;
             })
+    }
+
+    openCart(product: Product): void {
+        this.modalProduct = product;
+        this.modalService.show();
     }
 }

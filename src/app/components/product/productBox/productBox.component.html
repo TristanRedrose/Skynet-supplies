@@ -16,7 +16,7 @@
             </div>
         </div>
         <div *ngIf="product.available" class="product-order-container">
-            <button class="product-order-button" type="text">
+            <button class="product-order-button" type="text" (click)="onClick(product)">
                 <img src="../../../../assets/icons/add-to-cart.png" alt="add-to-cart">
             </button>
         </div>

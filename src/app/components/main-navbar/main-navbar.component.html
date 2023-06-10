@@ -18,17 +18,25 @@
                 <img src="../../../assets/icons/contact.png" alt="contact" class="nav-icon">
             </a> 
         </div>
-        <div *ngIf="!userLoggedIn" class="b-about-bar__navtext b-about-bar__navtext--right">
-            <a routerLink="auth/login" routerLinkActive="nav-active">
-                Login
-                <img src="../../../assets/icons/login.png" alt="login" class="nav-icon">
-            </a>
-        </div>
-        <div *ngIf="userLoggedIn" class="b-about-bar__navtext b-about-bar__navtext--right" (click)="logOut()">
-            <a routerLinkActive="nav-active">
-                Logout
-                <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
-            </a>
+        <div class="navbar-right">
+            <div class="b-about-bar__navtext">
+                <a routerLink="cart" routerLinkActive="nav-active">
+                    {{ cartItemCount$ | async }}
+                    <img src="../../../assets/icons/shopping-cart.png" alt="cart" class="nav-icon">
+                </a>
+            </div>
+            <div *ngIf="!userLoggedIn" class="b-about-bar__navtext">
+                <a routerLink="auth/login" routerLinkActive="nav-active">
+                    Login
+                    <img src="../../../assets/icons/login.png" alt="login" class="nav-icon">
+                </a>
+            </div>
+            <div *ngIf="userLoggedIn" class="b-about-bar__navtext" (click)="logOut()">
+                <a routerLinkActive="nav-active">
+                    Logout
+                    <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
+                </a>
+            </div>
         </div>
     </nav>
 </div>

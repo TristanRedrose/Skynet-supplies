@@ -23,6 +23,7 @@ import { ProductsComponent } from './components/business/workspace/employee/prod
 import { EditProductComponent } from './components/business/workspace/employee/editProduct/editProduct.component';
 import { ProductShowcaseComponent } from './components/product/productShowcase/productShowcase.component';
 import { ProductDetailsComponent } from './components/product/productDetails/productDetails';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard], children: [
@@ -50,7 +51,8 @@ const routes: Routes = [
     { path: 'auth', component: AuthComponent, children: [
       { path: 'login', component: LoginFormComponent },
       { path: 'register', component: RegistrationFormComponent },
-    ]}
+    ]},
+    { path: 'cart', component: CartComponent }
   ]}
 ];
 

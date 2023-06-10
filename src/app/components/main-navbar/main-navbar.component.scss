@@ -38,11 +38,13 @@
             color: $blue;
         }
     }
+}
 
-    &.b-about-bar__navtext--right {
-        position: absolute;
-        right: 0px;
-    }
+.navbar-right {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    
 }
 
 .nav-icon {

@@ -11,6 +11,7 @@
             <div *ngFor="let product of products">
                 <product-box-component
                     [product]="product"
+                    (newProductEvent)="openCart($event)"
                 >
                 </product-box-component>
             </div>
@@ -21,6 +22,11 @@
         </pagination-component>
     </div>
 </div>
+<order-modal-component 
+    *ngIf="modalProduct"
+    [product]="modalProduct"
+>
+</order-modal-component>
 
 
 

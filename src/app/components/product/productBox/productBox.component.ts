@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { Product } from "src/app/models/products/product.type";
 
@@ -10,12 +10,17 @@ import { Product } from "src/app/models/products/product.type";
 
 export class ProductBoxComponent {
     @Input() product!: Product;
+    @Output() newProductEvent = new EventEmitter<Product>();
 
     constructor(
-        private router: Router
+        private router: Router,
     ) {}
 
     goToProduct(id: string): void {
         this.router.navigate(['/product'], {queryParams: {id: id}})
+    }
+
+    onClick(product: Product):void {
+        this.newProductEvent.emit(product);
     }
 }

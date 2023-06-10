@@ -1,0 +1,16 @@
+<div *ngIf="(loading$ | async)" class="loading-container">
+    <spinner-component></spinner-component>
+</div>
+<div *ngIf="!cartItems.length && !(loading$ | async)" class="loading-container">
+    <div class="empty-cart-image__container">
+        <img class="empty-cart-image" src="../../../assets/images/empty_cart.png" alt="empty-cart">
+    </div>
+</div>
+<div *ngIf="!(loading$ | async) && cartItems.length" class="cart-items__container">
+    <cart-item-component 
+        [cartItems]="cartItems"
+        (cartItemDeleteEvent)="refreshPage()"
+        [totalPrice]="totalPrice"
+    >
+    </cart-item-component>
+</div>

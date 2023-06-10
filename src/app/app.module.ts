@@ -42,6 +42,9 @@ import { ProductShowcaseComponent } from './components/product/productShowcase/p
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ProductDetailsComponent } from './components/product/productDetails/productDetails';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { OrderModalComponent } from './components/order/orderModal.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CartItemComponent } from './components/cart/cartItemTable/cartItemTable.component';
 
 
 @NgModule({
@@ -82,7 +85,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     ProductShowcaseComponent,
     PaginationComponent,
     ProductDetailsComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    OrderModalComponent,
+    CartComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SessionService } from "src/app/services/auth/session.service";
+import { CartService } from "src/app/services/cart/cart.service";
 
 @Component({
     selector: 'main-navbar-component',
@@ -9,8 +10,12 @@ import { SessionService } from "src/app/services/auth/session.service";
 
 export class MainNavComponent implements OnInit {
     userLoggedIn: boolean = false;
+    cartItemCount$ = this.cartService.cartItemCountSubject$;
     
-    constructor(private sessionService: SessionService) {}
+    constructor(
+        private sessionService: SessionService,
+        private cartService: CartService,
+    ) {}
 
     ngOnInit(): void {
         this.sessionService.checkSession();

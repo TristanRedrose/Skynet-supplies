@@ -1,0 +1,92 @@
+@import '../../vars.scss';
+
+.order-modal__image-container {
+    width: 200px;
+    height: 150px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px 0px;
+}
+
+.order-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-order__info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-selector__container {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.order-quantity-button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    background-color: $royal;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        background-color: $yellow-shade;
+    }
+
+    &:active {
+        border: 1px $royal solid;
+    }
+}
+
+.quantity-counter {
+    box-sizing: border-box;
+    width: 60px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $royal;
+}
+
+.order-button {
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &.order-button__accept {
+        background-color: lightgreen;
+        margin-bottom: 16px;
+
+        &:hover {
+            box-shadow: 0 5px 8px 0 rgba($royal, 0.18), 0 4px 8px 0 rgba($royal, 0.15);
+        }
+    }
+
+    &.order-button__cancel {
+        background-color: rgba($royal, 0.5);
+        color: white;
+
+        &:hover {
+            box-shadow: 0 5px 8px 0 rgba($royal, 0.18), 0 4px 8px 0 rgba($royal, 0.15);
+        }
+    }
+}
+
+.buttons__container {
+    padding: 16px 0px;
+    display: flex;
+    flex-direction: column;
+}
