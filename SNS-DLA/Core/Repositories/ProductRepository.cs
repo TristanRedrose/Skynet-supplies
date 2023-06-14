@@ -28,7 +28,7 @@ namespace SNS_DLA.Core.Repositories
             var paginationFilter = filters.PaginationFilter;
             var searchFilter = filters.SearchFilter;
 
-            var query = dbSet.Include(p => p.Subcategory).ThenInclude(p => p.Category).Select(p => p);
+            var query = dbSet.Include(p => p.Subcategory).ThenInclude(p => p.Category).AsQueryable();
 
             if (!string.IsNullOrEmpty(searchFilter.Search)) 
             {

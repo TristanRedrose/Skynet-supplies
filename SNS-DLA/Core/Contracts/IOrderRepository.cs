@@ -10,5 +10,6 @@ namespace SNS_DLA.Core.Contracts
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
+        public Task<IEnumerable<Order>> GetAllOrdersWithProducts();
     }
 }

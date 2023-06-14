@@ -1,0 +1,211 @@
+﻿[
+  {
+    "available": true,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release o",
+    "imageUrl": "https://everymac.com/images/other_images/iphone-4-5-big.jpg",
+    "name": "iPhone 4",
+    "price": 1234,
+    "subcategoryId": 15
+  },
+  {
+    "available": true,
+    "description": "Lorem ipsum iPhone 5 is almost like iphone 4 only with one plus ",
+    "imageUrl": "https://www.dpreview.com/files/p/E~C0x0S1000x750T600x450~articles/1343713337/iphone5.jpeg",
+    "name": "iPhone 5",
+    "price": 2300,
+    "subcategoryId": 15
+  },
+  {
+    "available": false,
+    "description": "Lorem ipsum alienware laptop something something danger zone",
+    "imageUrl": "https://www.lbtechreviews.com/wp-content/uploads/2022/03/Alienware_x17r2_lf.jpg",
+    "name": "Alienware X17 R2",
+    "price": 3000,
+    "subcategoryId": 5
+  },
+  {
+    "available": true,
+    "description": "Cable for monitor to computer connection",
+    "imageUrl": "https://m.media-amazon.com/images/I/618WDZI468L._SY450_.jpg",
+    "name": "Monitor cable",
+    "price": 4,
+    "subcategoryId": 20
+  },
+  {
+    "available": true,
+    "description": "Cellphone case cover for iPhone 4, bratz motif.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0687/4327/products/airbrush_main_image_14pm_250x250@2x.jpg?v=1670259555",
+    "name": "Cellphone case - Bratz",
+    "price": 3.49,
+    "subcategoryId": 20
+  },
+  {
+    "available": true,
+    "description": "Valve Orange Box, one of the best gaming deals in history, 5 games for under the price of one",
+    "imageUrl": "https://m.media-amazon.com/images/I/71NqBuE1PrL.jpg",
+    "name": "Orange box",
+    "price": 19.49,
+    "subcategoryId": 9
+  },
+  {
+    "available": true,
+    "description": "Lorem components ipsum ",
+    "imageUrl": "https://www.bhphotovideo.com/images/images1500x1500/ibuypower_slatemr_291i_gaming_desktop_1720819.jpg",
+    "name": "SlateMR 291Li",
+    "price": 3250,
+    "subcategoryId": 4
+  },
+  {
+    "available": false,
+    "description": "Bosch Toaster - toasts bread, reheats bagles, good for baking pop tarts etc...",
+    "imageUrl": "https://i.ebayimg.com/images/g/UeUAAOSwD1pfEZVS/s-l500.jpg",
+    "name": "Toaster",
+    "price": 63.99,
+    "subcategoryId": 13
+  },
+  {
+    "available": true,
+    "description": "Predator becomes the prey**My Review of the Sisters of Battle, Castigator Tank model from Games Workshop.Price £52.50EnjoySave £££ on Warhammer 40K.",
+    "imageUrl": "https://www.games-workshop.com/resources/catalog/product/threeSixty/99120108048_CastigorOTT1360/01-01.jpg",
+    "name": "Warhammer 40K: Castigator main battle tank",
+    "price": 75.49,
+    "subcategoryId": 11
+  },
+  {
+    "available": true,
+    "description": "Warhammer 40k imperial knight model for tabletop games",
+    "imageUrl": "https://static.insales-cdn.com/images/products/1/59/658628667/01__1_.jpg",
+    "name": "Warhammer 40K: Imperial knight",
+    "price": 120,
+    "subcategoryId": 11
+  },
+  {
+    "available": true,
+    "description": "Scary creepy chaos dreadnaught",
+    "imageUrl": "https://i.pinimg.com/550x/80/92/28/80922827307bd5a9f8b3d35222029e99.jpg",
+    "name": "Warhammer 40K: Chaos Dreadnaught",
+    "price": 225,
+    "subcategoryId": 11
+  },
+  {
+    "available": true,
+    "description": "Based dawn of war",
+    "imageUrl": "https://m.media-amazon.com/images/I/51tvcocbFlL._AC_.jpg",
+    "name": "Warhammer 40K: Dawn of War - Soulstorm",
+    "price": 12.99,
+    "subcategoryId": 9
+  },
+  {
+    "available": true,
+    "description": "Razer basilisk gaming mouse for precision performance",
+    "imageUrl": "https://egarner.hr/images/made/52978/slike/razer-basilisk-v3-pro-ergonomic-wireless-gaming-mouse-166831.jpg",
+    "name": "Razer Basilisk gaming mouse",
+    "price": 24.99,
+    "subcategoryId": 1
+  },
+  {
+    "available": false,
+    "description": "Old operating system for even older pcs",
+    "imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/38d71a2c-20f8-4bae-9537-f9f4d59d8af9/de30s62-9a739ff0-d303-401c-b091-0f35f6139228.png/v1/fill/w_338,h_356,q_80,strp/windows_97_upgrade_box__fake__by_grantrules_de30s62-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzU2IiwicGF0aCI6IlwvZlwvMzhkNzFhMmMtMjBmOC00YmFlLTk1MzctZjlmNGQ1OWQ4YWY5XC9kZTMwczYyLTlhNzM5ZmYwLWQzMDMtNDAxYy1iMDkxLTBmMzVmNjEzOTIyOC5wbmciLCJ3aWR0aCI6Ijw9MzM4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.-vhmsvZ5kESp7iKZRq6zSdsWQSNONW5vBgemnUOAHJw",
+    "name": "Windows 97",
+    "price": 12.5,
+    "subcategoryId": 3
+  },
+  {
+    "available": true,
+    "description": "Splendid game for a splendid time",
+    "imageUrl": "https://m.media-amazon.com/images/I/71EbsKxiYeL.jpg",
+    "name": "Splenda",
+    "price": 40,
+    "subcategoryId": 10
+  },
+  {
+    "available": true,
+    "description": "D&D player manual for the best loreming those ipsums",
+    "imageUrl": "https://m.media-amazon.com/images/I/818Bc9VG4TL.jpg",
+    "name": "D&D",
+    "price": 23,
+    "subcategoryId": 10
+  },
+  {
+    "available": true,
+    "description": "Movie not bad",
+    "imageUrl": "https://m.media-amazon.com/images/I/91XenzfpGhL._AC_UF1000,1000_QL80_.jpg",
+    "name": "Dungeons and Dragons: Honor amongst thieves",
+    "price": 30,
+    "subcategoryId": 8
+  },
+  {
+    "available": true,
+    "description": "Oldie board game , but a goody",
+    "imageUrl": "https://m.media-amazon.com/images/I/91FUEVnjT4L.jpg",
+    "name": "Cluedo",
+    "price": 12.99,
+    "subcategoryId": 10
+  },
+  {
+    "available": true,
+    "description": "Nice lego set",
+    "imageUrl": "https://www.idisplayit.com/images/detailed/88/lego-star-wars-ucs-millennium-falcon-coffee-table-01-1.webp",
+    "name": "Lego set: Millenium falcon",
+    "price": 33,
+    "subcategoryId": 7
+  },
+  {
+    "available": false,
+    "description": "Millenium falcon lego set with box, new and unopened",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1553/8473/products/lego-star-wars-75257-millennium-falcon-1.jpg?v=1589447046",
+    "name": "Lego set: Millenium falcon-Box set ",
+    "price": 40,
+    "subcategoryId": 7
+  },
+  {
+    "available": true,
+    "description": "Lego death star in original box, new and unopened",
+    "imageUrl": "https://www.lego.com/cdn/cs/set/assets/bltaf4abeb820733858/75159_alt1.jpg",
+    "name": "Lego set: Death star -Box Set",
+    "price": 44,
+    "subcategoryId": 7
+  },
+  {
+    "available": true,
+    "description": "Lego set: Death star, unboxed and already constructed",
+    "imageUrl": "https://www.lego.com/cdn/cs/set/assets/blt87db7a0904935c2a/75159.jpg?fit=bounds&format=jpg&quality=80&width=1500&height=1500&dpr=1",
+    "name": "Lego set: Death star",
+    "price": 32,
+    "subcategoryId": 7
+  },
+  {
+    "available": true,
+    "description": "Yummi samiches made with gooey cheese",
+    "imageUrl": "https://m.media-amazon.com/images/I/81IPetUOl0L._SL1500_.jpg",
+    "name": "Sandwich maker",
+    "price": 22,
+    "subcategoryId": 13
+  },
+  {
+    "available": true,
+    "description": "65\" (165 cm), OLED, 4K/UHD (3840 x 2160), webOS, Dolby Vision HDR, HDMI 2.0: , HDMI 2.1: 4, USB: 4",
+    "imageUrl": "https://cdn.sancta-domenica.hr/media/catalog/product/cache/ea5264e8466b4f5015cfdd7dff28e7d2/v/v/vvdvsvs.jpg",
+    "name": "TV 55\" LG OLED 55C2",
+    "price": 1149,
+    "subcategoryId": 12
+  },
+  {
+    "available": false,
+    "description": "2u1 - robotski usisavač i perač podova u jednom",
+    "imageUrl": "https://cdn.sancta-domenica.hr/media/catalog/product/cache/ea5264e8466b4f5015cfdd7dff28e7d2/2/0/2021-05-05_145309.jpg",
+    "name": "Usisavač robot iRobot Roomba Combo R1138",
+    "price": 299.99,
+    "subcategoryId": 14
+  },
+  {
+    "available": true,
+    "description": "4-bay NAS server, 2.5\"/3.5\" HDD/SSD podrška, 1GB, 1×G-LAN, Wake on LAN/WAN",
+    "imageUrl": "https://www.hgspot.hr/image/catalog/slike/113953-878.jpg?v=1.952450709",
+    "name": "NAS SYNOLOGY DS420j DiskStation",
+    "price": 353.5,
+    "subcategoryId": 6
+  }
+]
+

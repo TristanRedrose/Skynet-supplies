@@ -18,7 +18,7 @@ namespace SNS_DLA.Models.Filters
         public PaginationFilter(int pageNumber, int itemsPerPage)
         {
             Page = pageNumber < 1 ? 1 : pageNumber;
-            ItemsPerPage = itemsPerPage > 24 ? 24 : itemsPerPage;
+            ItemsPerPage = itemsPerPage > 48 ? 48 : itemsPerPage;
         }
     }
 }
