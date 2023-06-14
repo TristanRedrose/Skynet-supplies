@@ -5,10 +5,23 @@
         </div>
     </div>
     <div class="product-details__info-container">
-        <h2>{{ product.name }}</h2>
-        <h1><span class="price-text">{{ product.price}}</span><span class="icon-text"> $</span></h1>
-        <h3 [ngClass]="product.available ? 'green' : 'red'">{{ product.available ? "Available" : "Unavailable" }}</h3>
-        <p>{{product.description}}</p>
+        <div>
+            <h2>{{ product.name }}</h2>
+            <h1><span class="price-text">{{ product.price}}</span><span class="icon-text"> $</span></h1>
+            <h3 [ngClass]="product.available ? 'green' : 'red'">{{ product.available ? "Available" : "Unavailable" }}</h3>
+            <p>{{product.description}}</p>
+        </div>
+        <div class="button-container">
+            <button class="product-order-button" type="text" (click)="onClick()">
+                <img class="order-cart-image" src="../../../../assets/icons/add-to-cart.png" alt="add-to-cart">
+            </button>
+        </div>
     </div>
 </div>
+
+<order-modal-component 
+    *ngIf="product"
+    [product]="product"
+>
+</order-modal-component>
 

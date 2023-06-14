@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { finalize } from "rxjs";
 import { Product } from "src/app/models/products/product.type";
 import { LoadingService } from "src/app/services/loading/loading.service";
+import { ModalService } from "src/app/services/modal/modal.service";
 import { ProductService } from "src/app/services/products/product.service";
 
 @Component({
@@ -19,6 +20,7 @@ export class ProductDetailsComponent implements OnInit {
         private productService: ProductService,
         private loadingService: LoadingService,
         private route: ActivatedRoute,
+        private modalService: ModalService
     ) {}
 
     ngOnInit(): void {
@@ -38,5 +40,9 @@ export class ProductDetailsComponent implements OnInit {
                     console.log(this.product)
                 })
         }
+    }
+
+    onClick():void {
+        this.modalService.show();
     }
 }
