@@ -61,7 +61,6 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
         this.productService
             .getAllProducts(filters)
             .pipe(finalize(() => {
-                
                 this.loadingService.hide();
             }))
             .subscribe(res => {

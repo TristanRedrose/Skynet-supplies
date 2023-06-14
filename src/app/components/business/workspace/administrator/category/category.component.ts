@@ -7,14 +7,13 @@ import { Category } from "src/app/models/categories/category.models";
 import { ModalService } from "src/app/services/modal/modal.service";
 
 @Component({
-    selector: 'category-table-component',
-    templateUrl: './categoryTable.component.html',
-    styleUrls: ['./categoryTable.component.scss']
+    selector: 'category-component',
+    templateUrl: './category.component.html',
+    styleUrls: ['./category.component.scss']
 })
 
-export class CategoryTableComponent implements OnInit {
+export class CategoryComponent implements OnInit {
     categories: Category[] = [];
-    categoryData: Category | null = null;
     isLoading = this.loadingService.loading$;
 
     constructor(private categoryService: CategoryService, 
@@ -32,16 +31,6 @@ export class CategoryTableComponent implements OnInit {
             .subscribe((res: Category[]) => {
                 this.categories = res;
             })
-    }
-
-    openModal(category: Category): void {
-        this.categoryData = category;
-        this.modalService.show();
-    }
-
-    closeModal(): void {
-        this.categoryData = null;
-        this.modalService.hide();
     }
 
     deleteCategory(id: string): void {

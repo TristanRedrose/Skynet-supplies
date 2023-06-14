@@ -52,7 +52,6 @@ export class CategoryBarComponent implements OnInit, OnDestroy {
                 if (category) {
                     this.selectedCategory = category;
                 }
-                console.log(this.selectedCategory)
             }
         })
     }

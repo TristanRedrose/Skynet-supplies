@@ -7,7 +7,7 @@ import { RegistrationFormComponent } from './components/auth/Forms/registrationF
 import { AdminPageComponent } from './components/business/admin/admin.component';
 import { AddCategoryComponent } from './components/business/workspace/administrator/addCategory/addCategory.component';
 import { EmployeeRegistrationFormComponent } from './components/business/workspace/administrator/addEmployee/registrationForm.component';
-import { CategoryTableComponent } from './components/business/workspace/administrator/categoryTable/categoryTable.component';
+import { CategoryComponent } from './components/business/workspace/administrator/category/category.component';
 import { EditCategoryFormComponent } from './components/business/workspace/administrator/editCategory/editCategory.component';
 import { EditEmployeeFormComponent } from './components/business/workspace/administrator/editEmployee/editEmployee.component';
 import { EmployeeTableComponent } from './components/business/workspace/administrator/employeeTable/employeeTable.component';
@@ -24,13 +24,14 @@ import { EditProductComponent } from './components/business/workspace/employee/e
 import { ProductShowcaseComponent } from './components/product/productShowcase/productShowcase.component';
 import { ProductDetailsComponent } from './components/product/productDetails/productDetails';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/business/workspace/employee/orders/orders.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard], children: [
     {path: 'employee', component: EmployeeTableComponent},
     {path: 'employee/add', component: EmployeeRegistrationFormComponent},
     {path: 'employee/edit', component: EditEmployeeFormComponent},
-    {path: 'categories', component: CategoryTableComponent},
+    {path: 'categories', component: CategoryComponent},
     {path: 'categories/add', component: AddCategoryComponent},
     {path: 'categories/edit', component: EditCategoryFormComponent},
     {path: 'subcategories/edit', component: EditSubcategoryComponent},
@@ -40,7 +41,8 @@ const routes: Routes = [
     {path: 'customer/edit', component: EditCustomerComponent},
     {path: 'product/add', component: AddProductComponent},
     {path: 'product/edit', component: EditProductComponent},
-    {path: 'products', component: ProductsComponent}
+    {path: 'products', component: ProductsComponent},
+    {path: 'orders', component: OrderComponent}
   ]},
   { path: '', component: LayoutComponent, children: [
     { path: '', component: ProductShowcaseComponent},

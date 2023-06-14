@@ -3,12 +3,12 @@ import { CartItem } from "src/app/models/cart/cart.types"
 import { CartService } from "src/app/services/cart/cart.service";
 
 @Component({
-    selector: 'cart-item-component',
+    selector: 'cart-item-table',
     templateUrl: './cartItemTable.component.html',
     styleUrls: ['./cartItemTable.component.scss'],
 })
 
-export class CartItemComponent {
+export class CartItemTableComponent {
 
     @Input() cartItems!: CartItem[];
     @Output() cartItemDeleteEvent = new EventEmitter<void>();

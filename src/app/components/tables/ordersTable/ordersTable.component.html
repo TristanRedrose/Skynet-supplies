@@ -1,8 +1,8 @@
-<modal-component *ngIf="productData">
-    <h4>Are you sure you want to remove product: {{productData.name}}?</h4>
+<modal-component *ngIf="orderData">
+    <h4>Are you sure you want to remove order: {{orderData.orderId}}?</h4>
     <div class="modal-button-container">
         <button class="edit-button" (click)="closeModal()">Close</button>
-        <button class="delete-button" (click)="deleteProduct(productData.productId)">Delete</button>
+        <button class="delete-button" (click)="deleteOrder(orderData.orderId)">Delete</button>
     </div>
 </modal-component>
 
@@ -10,19 +10,19 @@
     <thead class="table-head">
         <tr>
             <th>
-                CATEGORY
+                ID
             </th>
             <th>
-                SUBCATEGORY
+                CUSTOMER
             </th>
             <th>
-                NAME
+                PRODUCTS
             </th>
             <th>
-                PRICE
+                CHECKOUT PRICE
             </th>
             <th>
-                STOCK
+                STATUS
             </th>
             <th>
                 EDIT
@@ -32,28 +32,28 @@
             </th>
         </tr>
     </thead>
-    <tbody *ngFor="let product of products" class="table-body">
+    <tbody *ngFor="let order of orders" class="table-body">
         <tr>
             <td>
-                {{product.categoryName}}
+                {{order.orderId}}
             </td>
             <td>
-                {{product.subcategoryName}}
+                {{order.customerName}}
             </td>
             <td>
-                {{product.name}}
+                {{ productCount(order) }}
             </td>
             <td>
-                $ {{product.price}}
+                $ {{order.checkoutPrice}}
             </td>
             <td>
-                {{product.available ? "Available" : "Unavailable"}}
+                {{ OrderStatus[order.status] }}
             </td>
             <td class="button-box">
-                <button class="edit-button" (click)="goToEdit(product.productId)">Edit</button>
+                <button class="edit-button" (click)="goToEdit(order.orderId)">Edit</button>
             </td>
             <td class="button-box">
-                <button class="delete-button" type="text" (click)="openModal(product)">Delete</button>
+                <button class="delete-button" type="text" (click)="openModal(order)">Delete</button>
             </td>
         </tr>
     </tbody>

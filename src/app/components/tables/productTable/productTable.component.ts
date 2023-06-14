@@ -5,7 +5,7 @@ import { ModalService } from "src/app/services/modal/modal.service";
 @Component({
     selector: 'product-table-component',
     templateUrl: './productTable.component.html',
-    styleUrls: ['./productTable.component.scss']
+    styleUrls: ['../table.component.scss']
 })
 
 export class ProductTableComponent {

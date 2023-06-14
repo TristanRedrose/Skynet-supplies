@@ -5,7 +5,7 @@ import { ModalService } from "src/app/services/modal/modal.service";
 @Component ({
     selector: 'user-table-component',
     templateUrl: './userTable.component.html',
-    styleUrls: ['./userTable.component.scss'],
+    styleUrls: ['../table.component.scss'],
 })
 
 export class UserTableComponent {
@@ -16,7 +16,6 @@ export class UserTableComponent {
     @Output() newDeleteEvent = new EventEmitter<string>();
 
     constructor( private modalService: ModalService ){}
-
 
     openModal(user: User): void {
         this.userData = user;

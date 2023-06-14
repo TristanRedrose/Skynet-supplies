@@ -1,0 +1,15 @@
+<div *ngIf="!(isLoading | async)" class="employees-container">
+    <h3>Categories</h3>
+    <div *ngIf="(categories.length > 0)" class="table-container">
+        <categories-table-component 
+            [categories]="categories"
+            (newRouteEvent)="goToEdit($event)"
+            (newDeleteEvent)="deleteCategory($event)"
+        >
+        </categories-table-component>
+    </div>
+
+    <div *ngIf="!(categories.length > 0 && !(isLoading | async))">
+        <h4 class="default-text">No categories currently listed</h4>
+    </div>
+</div>

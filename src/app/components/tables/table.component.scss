@@ -1,4 +1,4 @@
-@import '../../../vars.scss';
+@import '../../vars.scss';
 
 td, th {
     text-align: left;
@@ -20,7 +20,7 @@ td {
     }
 }
 
-.product-table {
+.table {
     width: 100%;
     border-collapse: collapse;
 }

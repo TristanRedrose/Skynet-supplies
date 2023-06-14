@@ -24,7 +24,7 @@ import { UserDataForm } from './components/business/admin/forms/userDataForm/use
 import { EditEmployeeFormComponent } from './components/business/workspace/administrator/editEmployee/editEmployee.component';
 import { CategoryFormComponent } from './components/business/admin/forms/categoryForm/categoryForm.component';
 import { AddCategoryComponent } from './components/business/workspace/administrator/addCategory/addCategory.component';
-import { CategoryTableComponent } from './components/business/workspace/administrator/categoryTable/categoryTable.component';
+import { CategoryComponent } from './components/business/workspace/administrator/category/category.component';
 import { EditCategoryFormComponent } from './components/business/workspace/administrator/editCategory/editCategory.component';
 import { SingleFieldFormComponent } from './components/business/admin/forms/singleFieldForm/singleFieldForm.component';
 import { ModalComponent } from './components/modals/modal.component';
@@ -42,9 +42,12 @@ import { ProductShowcaseComponent } from './components/product/productShowcase/p
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ProductDetailsComponent } from './components/product/productDetails/productDetails';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { OrderModalComponent } from './components/order/orderModal.component';
+import { OrderModalComponent } from './components/modals/orderModal/orderModal.component';
 import { CartComponent } from './components/cart/cart.component';
-import { CartItemComponent } from './components/cart/cartItemTable/cartItemTable.component';
+import { CartItemTableComponent } from './components/cart/cartItemTable/cartItemTable.component';
+import { OrderComponent } from './components/business/workspace/employee/orders/orders.component';
+import { OrdersTableComponent } from './components/tables/ordersTable/ordersTable.component';
+import { CategoryTableComponent } from './components/tables/categoryTable/categoryTable.compoent';
 
 
 @NgModule({
@@ -68,7 +71,7 @@ import { CartItemComponent } from './components/cart/cartItemTable/cartItemTable
     EditEmployeeFormComponent,
     CategoryFormComponent,
     AddCategoryComponent,
-    CategoryTableComponent,
+    CategoryComponent,
     EditCategoryFormComponent,
     SingleFieldFormComponent,
     ModalComponent,
@@ -88,7 +91,10 @@ import { CartItemComponent } from './components/cart/cartItemTable/cartItemTable
     SearchBarComponent,
     OrderModalComponent,
     CartComponent,
-    CartItemComponent,
+    CartItemTableComponent,
+    OrderComponent,
+    OrdersTableComponent,
+    CategoryTableComponent
   ],
   imports: [
     BrowserModule,

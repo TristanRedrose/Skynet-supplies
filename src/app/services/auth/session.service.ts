@@ -13,6 +13,7 @@ import { LoginRequest } from "src/app/models/auth/authRequest.types";
 export class SessionService {
 
     private _userLoggedIn = new BehaviorSubject(false);
+    userLoggedIn$ = this._userLoggedIn.asObservable();
 
     private _session: Session = {
         token: null,
@@ -63,12 +64,12 @@ export class SessionService {
             validTo: null,
             role: null,
         }
+        localStorage.removeItem('currentSession');
         this._userLoggedIn.next(false);
     }
 
     logOut(): void {
         this.clearSession();
-        localStorage.clear();
         clearTimeout(this._sessionTimer);
         console.log("logged out");
         this.router.navigate(["/auth/login"]);

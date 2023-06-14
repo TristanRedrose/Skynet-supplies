@@ -11,14 +11,13 @@ import { ProductOrder } from "src/app/models/order/productOrder.type";
 export class CartService {
     private cartItemCountSubject = new BehaviorSubject<number>(0);
     cartItemCountSubject$ = this.cartItemCountSubject.asObservable();
+    cartStorageName: string = 'cart';
 
     constructor(
         private http: HttpClient,
     ) {
         this.checkCartItemCount();
     }
-
-   
 
     checkCartItemCount():void {
         let cartItemCount: number = 0;
@@ -44,7 +43,7 @@ export class CartService {
 
         this.setCartItemCount(this.cartItemCount + newCartItem.quantity);
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem(this.cartStorageName, JSON.stringify(cart));
     }
 
     removeProductFromCart(productId: number, productQuantity: number):void {
@@ -58,7 +57,7 @@ export class CartService {
 
         this.setCartItemCount(this.cartItemCount - productQuantity);
 
-        localStorage.setItem('cart', JSON.stringify(newCart));
+        localStorage.setItem(this.cartStorageName, JSON.stringify(newCart));
     }
 
     getProductsInCart(): Observable<CartResponse> {
@@ -76,6 +75,11 @@ export class CartService {
                 }
                 return throwError(() => new Error(errorMessage));
             }));
+    }
+
+    clearCart(): void {
+        localStorage.removeItem(this.cartStorageName);
+        this.setCartItemCount(0);
     }
 
     setCartItemCount(newCount: number) {
@@ -98,6 +102,6 @@ export class CartService {
     }
 
     get cartString(): string | null {
-        return localStorage.getItem("cart");
+        return localStorage.getItem(this.cartStorageName);
     }
 }

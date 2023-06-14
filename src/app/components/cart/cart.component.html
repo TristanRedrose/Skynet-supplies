@@ -7,10 +7,21 @@
     </div>
 </div>
 <div *ngIf="!(loading$ | async) && cartItems.length" class="cart-items__container">
-    <cart-item-component 
+    <cart-item-table 
         [cartItems]="cartItems"
         (cartItemDeleteEvent)="refreshPage()"
         [totalPrice]="totalPrice"
     >
-    </cart-item-component>
+    </cart-item-table>
+    <div class="order-button__container">
+        <button *ngIf="(userLoggedIn$ | async)" class="order-button" type="button" (click)="placeOrder()">
+            <h2>Order</h2>
+            <div class="order-button__image-container">
+                <img class="order-button-image" src="../../../assets/icons/shopping-cart.png" alt="cart">
+            </div>
+        </button>
+        <button *ngIf="!(userLoggedIn$ | async)" class="order-button" type="button" (click)="goToLogin()">
+            <h2>Login</h2>
+        </button>
+    </div>
 </div>
