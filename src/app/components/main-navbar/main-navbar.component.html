@@ -31,11 +31,25 @@
                     <img src="../../../assets/icons/login.png" alt="login" class="nav-icon">
                 </a>
             </div>
-            <div *ngIf="userLoggedIn" class="b-about-bar__navtext" (click)="logOut()">
-                <a routerLinkActive="nav-active">
-                    Logout
-                    <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
+            <div *ngIf="userLoggedIn" class="b-about-bar__navtext">
+                <a routerLinkActive="nav-active" (click)="toggleUserBar()">
+                    User
+                    <img src="../../../assets/icons/user.png" alt="toggle-bar" class="nav-icon">
                 </a>
+            </div>
+            <div *ngIf="userLoggedIn && userBarOpen" class="user-options-container">
+                <div  class="b-about-bar__navtext" (click)="hideUserBar()">
+                    <a routerLink="/orders" routerLinkActive="nav-active">
+                        Orders
+                        <img src="../../../assets/icons/checkout.png" alt="orders" class="nav-icon">
+                    </a>
+                </div>
+                <div class="b-about-bar__navtext" (click)="logOut()">
+                    <a routerLinkActive="nav-active">
+                        Logout
+                        <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
+                    </a>
+                </div>
             </div>
         </div>
     </nav>

@@ -24,7 +24,9 @@ import { EditProductComponent } from './components/business/workspace/employee/e
 import { ProductShowcaseComponent } from './components/product/productShowcase/productShowcase.component';
 import { ProductDetailsComponent } from './components/product/productDetails/productDetails';
 import { CartComponent } from './components/cart/cart.component';
-import { OrderComponent } from './components/business/workspace/employee/orders/orders.component';
+import { BusinessOrdersComponent } from './components/business/workspace/employee/orders/orders.component';
+import { OrdersComponent } from './components/order/order.component';
+import { OrderDetailsComponent } from './components/order/orderDetails/orderDetails.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard], children: [
@@ -42,7 +44,7 @@ const routes: Routes = [
     {path: 'product/add', component: AddProductComponent},
     {path: 'product/edit', component: EditProductComponent},
     {path: 'products', component: ProductsComponent},
-    {path: 'orders', component: OrderComponent}
+    {path: 'orders', component: BusinessOrdersComponent}
   ]},
   { path: '', component: LayoutComponent, children: [
     { path: '', component: ProductShowcaseComponent},
@@ -54,7 +56,9 @@ const routes: Routes = [
       { path: 'login', component: LoginFormComponent },
       { path: 'register', component: RegistrationFormComponent },
     ]},
-    { path: 'cart', component: CartComponent }
+    { path: 'cart', component: CartComponent },
+    { path: 'orders', component: OrdersComponent },
+    { path: 'order', component: OrderDetailsComponent }
   ]}
 ];
 

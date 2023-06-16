@@ -45,9 +45,13 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { OrderModalComponent } from './components/modals/orderModal/orderModal.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemTableComponent } from './components/cart/cartItemTable/cartItemTable.component';
-import { OrderComponent } from './components/business/workspace/employee/orders/orders.component';
+import { BusinessOrdersComponent } from './components/business/workspace/employee/orders/orders.component';
 import { OrdersTableComponent } from './components/tables/ordersTable/ordersTable.component';
 import { CategoryTableComponent } from './components/tables/categoryTable/categoryTable.compoent';
+import { OrdersComponent } from './components/order/order.component';
+import { OrderBoxComponent } from './components/order/orderBox/orderBox.component';
+import { OrderDetailsTableComponent } from './components/order/orderDetailsTable/orderDetailsTable.component';
+import { OrderDetailsComponent } from './components/order/orderDetails/orderDetails.component';
 
 
 @NgModule({
@@ -92,9 +96,13 @@ import { CategoryTableComponent } from './components/tables/categoryTable/catego
     OrderModalComponent,
     CartComponent,
     CartItemTableComponent,
-    OrderComponent,
+    BusinessOrdersComponent,
     OrdersTableComponent,
-    CategoryTableComponent
+    CategoryTableComponent,
+    OrdersComponent,
+    OrderBoxComponent,
+    OrderDetailsTableComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

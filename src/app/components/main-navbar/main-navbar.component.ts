@@ -11,6 +11,7 @@ import { CartService } from "src/app/services/cart/cart.service";
 export class MainNavComponent implements OnInit {
     userLoggedIn: boolean = false;
     cartItemCount$ = this.cartService.cartItemCountSubject$;
+    userBarOpen: boolean = false;
     
     constructor(
         private sessionService: SessionService,
@@ -28,5 +29,14 @@ export class MainNavComponent implements OnInit {
     logOut(): void {
         this.sessionService.logOut();
         this.userLoggedIn = false;
+        this.hideUserBar();
+    }
+
+    toggleUserBar(): void {
+        this.userBarOpen = !this.userBarOpen;
+    }
+    
+    hideUserBar():void {
+        this.userBarOpen = false;
     }
 }

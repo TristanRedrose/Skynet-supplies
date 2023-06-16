@@ -55,6 +55,21 @@
     cursor: pointer;
 }
 
+.user-options-container {
+    position: absolute;
+    right:0px;
+    top:200%;
+    background-color: $yellow-shade;
+    z-index: 100;
+    padding-left:12px;
+    padding-top: 12px;
+    border-radius: 4px;
+    
+    & div {
+        margin-bottom: 12px;
+    }
+}
+
 @media only screen and (max-width: 440px) {
     .b-about-bar__navtext {
         font-size: .6em;

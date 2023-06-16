@@ -1,0 +1,56 @@
+@import '../../../vars.scss';
+
+table {
+    border: 1px rgba($royal, 0.3) solid;
+}
+
+td {
+    padding: 16px 0px;
+}
+
+.table-head {
+    background-color: $yellow-shade;
+    text-align: left;
+
+    tr {
+        th {
+            padding: 16px 0px;
+        }
+    }
+}
+
+.center-align {
+    text-align: center;
+}
+
+th, table {
+    border-collapse: collapse;
+}
+
+.cart-items-table {
+    width: 100%;
+}
+
+.cart-item-image__container {
+    width: 120px;
+    height: 60px;
+}
+
+.cart-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.item-image-cell {
+    display: flex;
+    justify-content: center;
+}
+
+.table-body {
+    tr {
+        &:nth-child(even) {
+            background-color: rgba($royal, 0.2);
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@import '../../../vars.scss';
+
+.order-box {
+    border: 1px rgba($royal, 0.6) solid;
+    border-radius: 4px;
+    width: 350px;
+    display: flex;
+    cursor: pointer;
+}
+
+.order-image-container {
+    box-sizing: border-box;
+    padding: 8px;
+    height: 200px;
+    width: 50%;
+}
+
+.order-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    justify-content: space-around;
+}

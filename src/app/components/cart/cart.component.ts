@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
 
         this.orderService.placeOrder(orderRequest).subscribe(() =>{
             this.cartService.clearCart();
-            this.router.navigate(['']);
+            this.router.navigate(['/orders']);
         });
     }
 

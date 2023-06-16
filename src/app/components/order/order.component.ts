@@ -5,12 +5,12 @@ import { LoadingService } from "src/app/services/loading/loading.service";
 import { OrderService } from "src/app/services/order/order.service";
 
 @Component({
-    selector: 'order-component',
-    templateUrl: './orders.component.html',
-    styleUrls: ['./orders.component.scss']
+    selector: 'orders-component',
+    templateUrl: './order.component.html',
+    styleUrls: ['./order.component.scss'],
 })
 
-export class BusinessOrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit {
     orders!: OrderDetails[];
     isLoading$ = this.loadingService.loading$;
 
@@ -21,22 +21,6 @@ export class BusinessOrdersComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadOrders();
-    }
-
-    goToEdit(id:string): void {
-
-    }
-
-    deleteOrder(id:string): void {
-        this.loadingService.show();
-        this.orderService
-            .deleteOrder(id)
-            .pipe(finalize(() => {
-                this.loadingService.hide();
-            }))
-            .subscribe(() => {
-                this.loadOrders();
-            });
     }
 
     loadOrders():void {
@@ -50,4 +34,3 @@ export class BusinessOrdersComponent implements OnInit {
         })
     }
 }
-
