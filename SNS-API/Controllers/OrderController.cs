@@ -7,6 +7,7 @@ using SNS_BLA.Services.UserService;
 using SNS_DLA.Models.DTO_s.Request;
 using SNS_DLA.Models.DTO_s.Response;
 using SNS_DLA.Models.Entities;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace SNS_API.Controllers
@@ -79,12 +80,25 @@ namespace SNS_API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "EmployeeOnly")]
         public async Task<ActionResult<OrderResponse>> GetAllOrderAsync()
         {
             try
             {
-                var allOrders = await _orderService.GetOrdersAsync();
+                var claims = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+
+                string? email = null;
+
+                if (claims != null & claims.Value == "Customer")
+                {
+                    var emailClaim = User.Claims.FirstOrDefault(c => c.Type == "Email");
+
+                    if (emailClaim != null)
+                    { 
+                        email = emailClaim.Value;
+                    }
+                } 
+
+                var allOrders = await _orderService.GetOrdersAsync(email);
 
                 if (allOrders == null)
                 {
@@ -115,9 +129,29 @@ namespace SNS_API.Controllers
 
                 return BadRequest();
             }
-            catch (Exception e)
+            catch
             {
-                Console.WriteLine(e);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<OrderDetails>> GetOrderByIdAsync([FromRoute] int id)
+        {
+            try
+            {
+                var orderDetails = await _orderService.GetByIdAsync(id);
+
+                if (orderDetails != null)
+                {
+                    return Ok(orderDetails);
+                }
+
+                return BadRequest();
+            }
+            catch
+            {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }

@@ -28,6 +28,16 @@ namespace SNS_DLA.Core.Repositories
             return result;
         }
 
+        public override async Task<Order> GetByIdAsync(int id)
+        {
+            return await dbSet
+                .Include(o => o.Customer)
+                .Include(o => o.OrderedProducts)
+                    .ThenInclude(op => op.Product)
+                .Where(o => o.OrderId == id)
+                .FirstAsync();
+        }
+
         public override async Task<bool> DeleteAsync(int id)
         {
             var item = await dbSet.Include(o => o.OrderedProducts).FirstOrDefaultAsync(o => o.OrderId == id);

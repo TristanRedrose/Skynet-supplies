@@ -100,12 +100,17 @@ namespace SNS_BLA.Services.OrderService
             return success;
         }
 
-        public async Task<OrderResponse> GetOrdersAsync()
+        public async Task<OrderResponse> GetOrdersAsync(string? email)
         { 
             var orderResponse = new OrderResponse();
             orderResponse.Orders = new List<OrderDetails>();
 
             var allOrders = await _orderRepository.GetAllOrdersWithProducts();
+
+            if (email != null)
+            {
+                allOrders = allOrders.Where(o => o.Customer.Email == email);
+            }
 
             foreach(var order in allOrders)
             {
@@ -147,6 +152,38 @@ namespace SNS_BLA.Services.OrderService
             await _unitOfWork.CompleteAsync();
 
             return result;
+        }
+
+        public async Task<OrderDetails> GetByIdAsync(int id)
+        {
+            var order = await this._orderRepository.GetByIdAsync(id);
+
+            var orderDetails = new OrderDetails
+            {
+                OrderId = order.OrderId,
+                CartItems = new List<CartItem>(),
+                CustomerId = order.Customer.Id,
+                CustomerName = order.Customer.Name,
+                CheckoutPrice = order.CheckoutPrice,
+                Status = order.Status,
+            };
+
+            foreach (var orderedProduct in order.OrderedProducts)
+            {
+                var item = new CartItem
+                {
+                    ProductId = orderedProduct.ProductId,
+                    Name = orderedProduct.Product.Name,
+                    ImageUrl = orderedProduct.Product.ImageUrl,
+                    Price = orderedProduct.Product.Price,
+                    Quantity = orderedProduct.Quantity,
+                    TotalPrice = orderedProduct.Product.Price * orderedProduct.Quantity,
+                };
+
+                orderDetails.CartItems.Add(item);
+            }
+
+            return orderDetails;
         }
     }
 }

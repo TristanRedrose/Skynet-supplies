@@ -14,7 +14,8 @@ namespace SNS_BLA.Services.OrderService
     {
        Task<CartResponse> GetCart(List<CartItemRequest> cartRequest);
        Task<bool> PlaceOrder(OrderInfo orderInfo);
-       Task<OrderResponse> GetOrdersAsync();
+       Task<OrderResponse> GetOrdersAsync(string? email);
        Task<bool> DeleteAsync(int id);
+       Task<OrderDetails> GetByIdAsync(int id);
     }
 }
