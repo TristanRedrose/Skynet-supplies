@@ -1,4 +1,5 @@
-﻿using SNS_BLA.Services.Base.BaseService;
+﻿using Azure.Core;
+using SNS_BLA.Services.Base.BaseService;
 using SNS_DLA.Core.Contracts;
 using SNS_DLA.Core.IConfiguration;
 using SNS_DLA.Models.DTO_s.Request;
@@ -142,6 +143,51 @@ namespace SNS_BLA.Services.ProductService
             };
 
             return allProductsResponse;
+        }
+
+        public async Task<bool> AddDefaultProducts(List<ProductRequest> productList)
+        {
+            var categoryFilter = new CategoryFilter();
+            var pageFilter = new PaginationFilter();
+            var searchFilter = new SearchFilter();
+
+            var filters = new Filters
+            {
+                CategoryFilter = categoryFilter,
+                SearchFilter = searchFilter,
+                PaginationFilter = pageFilter,
+            };
+     
+            var currentProducts = await _repository.GetProductsWithCategory(filters);
+
+            if (currentProducts.ProductCount > 0)
+            {
+                return false;
+            }
+
+            foreach (var product in productList)
+            {
+                var newProduct = new Product
+                {
+                    Name = product.Name,
+                    SubcategoryId = product.SubcategoryId,
+                    Description = product.Description,
+                    Price = product.Price,
+                    Available = product.Available,
+                    ImageUrl = product.ImageUrl,
+                };
+
+                var result = await _repository.AddAsync(newProduct);
+
+                if (!result)
+                {
+                    return false;
+                }
+            }
+
+            await _unitOfWork.CompleteAsync();
+
+            return true;
         }
     }
 }

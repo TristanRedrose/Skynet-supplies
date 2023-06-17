@@ -2,8 +2,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Writers;
-using SNS_API.Helpers.ArgHelper;
+using SNS_API.Helpers.ArgHelper.AdminHelper;
+using SNS_API.Helpers.ArgHelper.CategoryHelper;
+using SNS_API.Helpers.ArgHelper.ProductHelper;
 using SNS_BLA;
+using SNS_BLA.Services.CategoryService;
+using SNS_BLA.Services.ProductService;
 using SNS_BLA.Services.UserService;
 using SNS_DLA;
 using SNS_DLA.Data;
@@ -81,16 +85,17 @@ var app = builder.Build();
 //Add admin in terminal
 foreach (var argument in args)
 {
+    using var scope = app.Services.CreateScope();
+
+    var services = scope.ServiceProvider;
+
     Console.WriteLine(argument);
+
     if (argument == "--addSuperuser")
     {
-        using var scope = app.Services.CreateScope();
-
-        var services = scope.ServiceProvider;
-
         var authService = services.GetRequiredService<IAuthService>();
 
-        var argHandler = new ArgHandler(authService);
+        var argHandler = new AdminHandler(authService);
 
         var result = await argHandler.AddAdmin();
 
@@ -101,6 +106,34 @@ foreach (var argument in args)
         }
 
         Console.WriteLine("Admin added successfully");
+        Environment.Exit(0);
+    }
+
+    if (argument == "--seedDatabase")
+    {
+        var categoryService = services.GetRequiredService<ICategoryService>();
+
+        var categoryHandler = new CategoryHandler(categoryService);
+        var isSuccess = await categoryHandler.AddDefaultCategories();
+
+        if (!isSuccess)
+        {
+            Console.WriteLine("Failed category addition.");
+            Environment.Exit(-1);
+        }
+
+        var productService = services.GetRequiredService<IProductService>();
+
+        var productHandler = new ProductHandler(productService);
+        isSuccess = await productHandler.AddDefaultProducts();
+
+        if (!isSuccess)
+        {
+            Console.WriteLine("Failed product addition.");
+            Environment.Exit(-1);
+        }
+
+        Console.WriteLine("Database items added");
         Environment.Exit(0);
     }
 };

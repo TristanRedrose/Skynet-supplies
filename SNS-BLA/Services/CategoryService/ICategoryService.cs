@@ -21,6 +21,8 @@ namespace SNS_BLA.Services.CategoryService
         Task<bool> DeleteAsync(int id);
 
         Task<bool> UpdateAsync(int id, string categoryName);
+
+        Task<bool> AddDefaultCategories(List<AddCategoryWithSubcategoriesRequest> categoryList);
     }
 
 }

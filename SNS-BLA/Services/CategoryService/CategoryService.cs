@@ -1,4 +1,5 @@
-﻿using SNS_BLA.Services.Base.BaseService;
+﻿using Azure.Core;
+using SNS_BLA.Services.Base.BaseService;
 using SNS_DLA.Core.Contracts;
 using SNS_DLA.Core.Generics.IGenericRepository;
 using SNS_DLA.Core.IConfiguration;
@@ -130,5 +131,44 @@ namespace SNS_BLA.Services.CategoryService
             return actionSuccess;
         }
 
+        public async Task<bool> AddDefaultCategories(List<AddCategoryWithSubcategoriesRequest> categoryList)
+        {
+            var existingCategories = await _repository.GetAllAsync();
+
+            if(existingCategories.Any())
+            {
+                return false;
+            }
+
+            foreach (var category in categoryList)
+            {
+                var newCategory = new Category
+                {
+                    Name = category.Name,
+                    SubCategories = new List<SubCategory>(),
+                };
+
+                foreach (var subcategory in category.Subcategories)
+                {
+                    var newSubcategory = new SubCategory
+                    {
+                        Name = subcategory.Name,
+                    };
+
+                    newCategory.SubCategories.Add(newSubcategory);
+                }
+
+                var result = await _repository.AddCategoryWithSubcategoriesAsync(newCategory);
+
+                if(!result)
+                {
+                    return false;
+                }
+            }
+
+            await _unitOfWork.CompleteAsync();
+
+            return true;
+        }
     }
 }

@@ -24,5 +24,7 @@ namespace SNS_BLA.Services.ProductService
         Task<bool> UpdateAsync(int id, ProductRequest request);
 
         Task<ProductsWithCategoryResponse> GetAllProductData(Filters filters);
+
+        Task<bool> AddDefaultProducts(List<ProductRequest> productList);
     }
 }
