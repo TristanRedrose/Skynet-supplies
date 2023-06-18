@@ -3,6 +3,7 @@ import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, Observable, catchError, map, throwError } from "rxjs";
 import { CartResponse } from "src/app/models/cart/cart.types";
 import { ProductOrder } from "src/app/models/order/productOrder.type";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +13,7 @@ export class CartService {
     private cartItemCountSubject = new BehaviorSubject<number>(0);
     cartItemCountSubject$ = this.cartItemCountSubject.asObservable();
     cartStorageName: string = 'cart';
+    rootUrl: string = `${environment.rootApiUrl}/Order`;
 
     constructor(
         private http: HttpClient,
@@ -61,7 +63,7 @@ export class CartService {
     }
 
     getProductsInCart(): Observable<CartResponse> {
-        return this.http.post<CartResponse>('https://localhost:7046/Order/Cart', this.cart ).pipe(
+        return this.http.post<CartResponse>(`${this.rootUrl}/Cart`, this.cart ).pipe(
             map((res: CartResponse) => {
                 return res;
             }),

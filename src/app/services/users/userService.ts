@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { User, UserDetails } from "src/app/models/users/user";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, map, Observable, throwError } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -9,10 +10,12 @@ import { catchError, map, Observable, throwError } from "rxjs";
 
 export class UserService {
 
+    rootUrl: string = `${environment.rootApiUrl}/User`;
+
     constructor(private http: HttpClient){}
 
     getAllEmployees(): Observable<User[]>{
-        return this.http.get<User[]>("https://localhost:7046/User/Employee").pipe(
+        return this.http.get<User[]>(`${this.rootUrl}/Employee`).pipe(
             map((res: User[]) => {
                 return res
             }),
@@ -29,7 +32,7 @@ export class UserService {
     }
 
     getAllCustomers(): Observable<User[]>{
-        return this.http.get<User[]>("https://localhost:7046/User/Customer").pipe(
+        return this.http.get<User[]>(`${this.rootUrl}/Customer`).pipe(
             map((res: User[]) => {
                 return res
             }),
@@ -46,11 +49,11 @@ export class UserService {
     }
 
     deleteUser(id: string): Observable<void> {
-        return this.http.delete<void>(`https://localhost:7046/User/${id}`);
+        return this.http.delete<void>(`${this.rootUrl}/${id}`);
     }
 
     getUserData(id: string): Observable<UserDetails> {
-        return this.http.get<UserDetails>(`https://localhost:7046/User/${id}`).pipe(
+        return this.http.get<UserDetails>(`${this.rootUrl}/${id}`).pipe(
             map((res: UserDetails) => {
                 return res;
             }),
@@ -67,6 +70,6 @@ export class UserService {
     }
 
     updateUser(userData: UserDetails): Observable<void> {
-        return this.http.patch<void>(`https://localhost:7046/User`, userData);
+        return this.http.patch<void>(`${this.rootUrl}`, userData);
     }
 }

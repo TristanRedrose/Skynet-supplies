@@ -5,6 +5,7 @@ import { map,Observable, catchError, throwError, BehaviorSubject } from "rxjs";
 import { Router } from "@angular/router";
 import { Session } from "../../models/session/session.types"
 import { LoginRequest } from "src/app/models/auth/authRequest.types";
+import { environment } from "src/environments/environment";
 
 @Injectable ({
     providedIn: 'root'
@@ -14,6 +15,7 @@ export class SessionService {
 
     private _userLoggedIn = new BehaviorSubject(false);
     userLoggedIn$ = this._userLoggedIn.asObservable();
+    rootUrl: string = `${environment.rootApiUrl}/Auth`;
 
     private _session: Session = {
         token: null,
@@ -35,7 +37,7 @@ export class SessionService {
     }
     
     logIn(LoginRequest: LoginRequest): Observable<void>  {
-        return this.http.post<AuthResponse>("https://localhost:7046/Auth/Login", LoginRequest).pipe(map((res: AuthResponse) => {
+        return this.http.post<AuthResponse>(`${this.rootUrl}/Login`, LoginRequest).pipe(map((res: AuthResponse) => {
             const session = {
                 token: res.token,
                 username: res.username,

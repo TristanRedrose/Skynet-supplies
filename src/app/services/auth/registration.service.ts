@@ -5,17 +5,20 @@ import { AuthResponse } from "src/app/models/auth/authResponse.types";
 import { catchError, map, Observable, throwError } from "rxjs";
 import { SessionService } from "./session.service";
 import { Session } from "../../models/session/session.types";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class RegistrationService {
+
+    rootUrl: string = `${environment.rootApiUrl}/Auth`;
     
     constructor(private http: HttpClient , private sessionService: SessionService) {}
 
     registerUser(request: RegistrationRequest): Observable<void> {
-        return this.http.post<AuthResponse>("https://localhost:7046/Auth/Register", request).pipe(
+        return this.http.post<AuthResponse>(`${this.rootUrl}/Register`, request).pipe(
             map((res: AuthResponse) => {
                 let session: Session = {
                     username: res.username,
@@ -40,7 +43,7 @@ export class RegistrationService {
     }
 
     registerEmployee(request: RegistrationRequest): Observable<boolean> {
-        return this.http.post<boolean>("https://localhost:7046/Auth/Register/Employee", request).pipe(
+        return this.http.post<boolean>(`${this.rootUrl}/Register/Employee`, request).pipe(
             map((res: boolean) => {
                 return res;
             }),

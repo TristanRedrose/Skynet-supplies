@@ -4,6 +4,7 @@ import { Product } from "src/app/models/products/product.type";
 import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { Observable, catchError, map, throwError } from "rxjs";
 import { ProductResponse } from "src/app/models/products/productResponse.type";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root',
@@ -11,15 +12,17 @@ import { ProductResponse } from "src/app/models/products/productResponse.type";
 
 export class ProductService {
 
+    rootUrl: string = `${environment.rootApiUrl}/Product`;
+
     constructor(private http: HttpClient) {}
 
     addProduct(request: ProductRequest): Observable<void> {
-        return this.http.post<void>('https://localhost:7046/Product', request);
+        return this.http.post<void>(`${this.rootUrl}`, request);
     }
 
     getAllProducts(filters: HttpParams): Observable<ProductResponse> {
         
-        return this.http.get<ProductResponse>('https://localhost:7046/Product', {params: filters} ).pipe(
+        return this.http.get<ProductResponse>(`${this.rootUrl}`, {params: filters} ).pipe(
             map((res: ProductResponse) => {
                 return res;
             }),
@@ -36,14 +39,14 @@ export class ProductService {
     }
 
     deleteProduct(id: string): Observable<void> {
-        return this.http.delete<void>(`https://localhost:7046/Product/${id}`);
+        return this.http.delete<void>(`${this.rootUrl}/${id}`);
     }
 
     getProduct(id: string): Observable<Product> {
-        return this.http.get<Product>(`https://localhost:7046/Product/${id}`);
+        return this.http.get<Product>(`${this.rootUrl}/${id}`);
     }
 
     updateProduct(request: ProductRequest, id: string): Observable<void> {
-        return this.http.patch<void>(`https://localhost:7046/Product/${id}`, request);
+        return this.http.patch<void>(`${this.rootUrl}/${id}`, request);
     }
 }
