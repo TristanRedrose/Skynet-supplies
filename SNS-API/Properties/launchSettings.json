@@ -2,7 +2,7 @@
   "profiles": {
     "http": {
       "commandName": "Project",
-      "commandLineArgs": "--seedDatabase",
+      "commandLineArgs": "--addSuperuser",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {

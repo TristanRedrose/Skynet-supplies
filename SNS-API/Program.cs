@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Writers;
 using SNS_API.Helpers.ArgHelper.AdminHelper;
@@ -26,13 +27,15 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
-builder.Services.AddDbContext<SNSDbContext>();
+builder.Services.AddDbContext<SNSDbContext>(
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("SNSDb"))
+);
 builder.Services.AddControllers();
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>

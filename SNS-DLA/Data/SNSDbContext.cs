@@ -17,17 +17,14 @@ namespace SNS_DLA.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public SNSDbContext(DbContextOptions<SNSDbContext> options): base(options)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SNS");
+        
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-
-            builder.ApplyConfigurationsFromAssembly(typeof(SNSDbContext).Assembly);
+            builder.UseIdentityColumns();
         }
 
     }

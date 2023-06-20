@@ -83,3 +83,11 @@ D:\Software\Repos\SNS-API\SNS-API\obj\Debug\net7.0\SNS_API.Properties.Resources.
 D:\Software\Repos\SNS-API\SNS-API\obj\Debug\net7.0\SNS.PL.csproj.GenerateResource.cache
 D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Helpers\Data\DefaultProductList.json
 D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Helpers\Data\DefaultCategoriesList.json
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Npgsql.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Humanizer.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\Software\Repos\SNS-API\SNS-API\bin\Debug\net7.0\System.CodeDom.dll

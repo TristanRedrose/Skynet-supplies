@@ -13,3 +13,5 @@ D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.dll
 D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\refint\SNS.BAL.dll
 D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.pdb
 D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\ref\SNS.BAL.dll
+D:\Software\Repos\SNS-API\SNS-BLA\bin\Debug\net7.0\SNS.BAL.runtimeconfig.json
+D:\Software\Repos\SNS-API\SNS-BLA\obj\Debug\net7.0\SNS.BAL.genruntimeconfig.cache
