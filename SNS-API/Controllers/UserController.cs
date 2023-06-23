@@ -22,66 +22,150 @@ namespace SNS_API.Controllers
         [HttpGet]
         [Authorize(Policy = "AdminOnly")]
 
-        public async Task<IEnumerable<IdentityUser>> GetAllUsersAsync()
+        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetAllUsersAsync()
         {
-            return await _service.GetAllUsersAsync();
+            try
+            {
+                var users = await _service.GetAllUsersAsync();
+
+                if (users.Any())
+                {
+                    return Ok(users);
+                }
+                return NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpGet]
         [Route("Employee")]
         [Authorize(Policy = "AdminOnly")]
-        public async Task<IEnumerable<UserResponse>> GetAllEmployeesAsync()
+        public async Task<ActionResult<IEnumerable<UserResponse>>> GetAllEmployeesAsync()
         {
-            return await _service.GetUsersByRole("Employee");
+            try
+            {
+                var employees = await _service.GetUsersByRole("Employee");
+
+                if (employees.Any())
+                {
+                    return Ok(employees);
+                }
+
+                return NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet]
         [Route("Customer")]
-        public async Task<IEnumerable<UserResponse>> GetAllCustomersAsync()
+        public async Task<ActionResult<IEnumerable<UserResponse>>> GetAllCustomersAsync()
         {
-            return await _service.GetUsersByRole("Customer");
+            try
+            {
+                var customers = await _service.GetUsersByRole("Customer");
+
+                if (customers.Any())
+                {
+                    return Ok(customers);
+                }
+
+                return NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet]
         [Route("Admin")]
         [Authorize(Policy = "AdminOnly")]
-        public async Task<IEnumerable<UserResponse>> GetAllAdminsAsync()
-        {
-            return await _service.GetUsersByRole("Admin");
+        public async Task<ActionResult<IEnumerable<UserResponse>>> GetAllAdminsAsync()
+        {   try
+            {
+                var admins = await _service.GetUsersByRole("Admin");
+
+                if (admins.Any())
+                {
+                    return Ok(admins);
+                }
+
+                return NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> DeleteUserAsync([FromRoute] string id)
+        public async Task<ActionResult> DeleteUserAsync([FromRoute] string id)
         {
-            bool success = await _service.DeleteUserAsync(id);
-
-            if (success)
+            try
             {
-                return Ok();
-            }
+                bool success = await _service.DeleteUserAsync(id);
 
-            return NotFound();
+                if (success)
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<UserDetails> GetUserByIdAsync([FromRoute] string id)
+        public async Task<ActionResult<UserDetails>> GetUserByIdAsync([FromRoute] string id)
         {
-            return await _service.GetUserByIdAsync(id);
+            try
+            {
+                var user = await _service.GetUserByIdAsync(id);
+
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+
+                return NotFound();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPatch]
-        public async Task<IActionResult> UpdateUserAsync([FromBody] UserDetails userData)
+        public async Task<ActionResult> UpdateUserAsync([FromBody] UserDetails userData)
         {
-            var result = await _service.UpdateUserAsync(userData);
-
-            if (result)
+            try
             {
-                return Ok();
-            }
+                var result = await _service.UpdateUserAsync(userData);
 
-            return BadRequest();
+                if (result)
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
     }

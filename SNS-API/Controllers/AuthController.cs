@@ -46,19 +46,25 @@ namespace SNS_API.Controllers
 
         public async Task<IActionResult> RegisterEmployeeAsync([FromBody] UserRegistrationRequest request)
         {
-
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _service.RegisterUserAsync(request, "Employee");
-                if (!result.IsSuccess)
+                if (ModelState.IsValid)
                 {
-                    return BadRequest(result.ErrorResponse);
+                    var result = await _service.RegisterUserAsync(request, "Employee");
+                    if (!result.IsSuccess)
+                    {
+                        return BadRequest(result.ErrorResponse);
+                    }
+
+                    return Ok(result.IsSuccess);
                 }
 
-                return Ok(result.IsSuccess);
+                return BadRequest("Some properties are not valid");
             }
-
-            return BadRequest("Some properties are not valid");
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPost]
@@ -66,19 +72,27 @@ namespace SNS_API.Controllers
 
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest request)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _service.LoginUserAsync(request);
-
-                if (!result.IsSuccess)
+                if (ModelState.IsValid)
                 {
-                    return BadRequest(result);
+                    var result = await _service.LoginUserAsync(request);
+
+                    if (!result.IsSuccess)
+                    {
+                        return BadRequest(result);
+                    }
+
+                    return Ok(result.LoginResponse);
                 }
 
-                return Ok(result.LoginResponse);
+                return BadRequest("Some properties are not valid");
             }
-
-            return BadRequest("Some properties are not valid");
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
     }
 }

@@ -43,7 +43,12 @@ namespace SNS_API.Controllers
 
                 var allProducts = await _productService.GetAllProductData(filters);
 
-                return Ok(allProducts);
+                if (allProducts.ProductCount > 0)
+                {
+                    return Ok(allProducts);
+                }
+
+                return NotFound();
             }
             catch
             {

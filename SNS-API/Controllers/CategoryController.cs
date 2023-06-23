@@ -22,13 +22,18 @@ namespace SNS_API.Controllers
         {
             try
             {
-                var result = await _categoryService.AddCategoryWithSubcategories(request);
+                var actionSuccess = await _categoryService.AddCategoryWithSubcategories(request);
 
-                return Ok();
+                if (actionSuccess)
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -40,11 +45,16 @@ namespace SNS_API.Controllers
             {
                 var categories = await _categoryService.GetAllAsync();
 
-                return Ok(categories);
+                if (categories.Any())
+                {
+                    return Ok(categories);
+                }
+
+                return NotFound();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -57,11 +67,16 @@ namespace SNS_API.Controllers
             {
                 var category = await _categoryService.GetByIdAsync(id);
 
-                return Ok(category);
+                if (category !=null)
+                {
+                    return Ok(category);
+                }
+
+                return NotFound();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -72,16 +87,17 @@ namespace SNS_API.Controllers
             try
             {
                 var actionSuccess = await _categoryService.DeleteAsync(id);
+
                 if (actionSuccess)
                 {
                     return Ok();
                 }
 
-                return NotFound();
+                return BadRequest();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -89,16 +105,21 @@ namespace SNS_API.Controllers
         [Route("{id}")]
         public async Task<ActionResult> UpdateAsync([FromRoute] int id, [FromBody] CategoryUpdateRequest categoryUpdateRequest)
         {
-            
-
-            var actionSuccess = await _categoryService.UpdateAsync(id, categoryUpdateRequest.CategoryName);
-
-            if (actionSuccess)
+            try
             {
-                return Ok();
-            }
+                var actionSuccess = await _categoryService.UpdateAsync(id, categoryUpdateRequest.CategoryName);
 
-            return BadRequest();
+                if (actionSuccess)
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

@@ -27,12 +27,16 @@ namespace SNS_API.Controllers
             try
             {
                 var result = await _subcategoryService.AddSubcategory(request);
+                if (result)
+                {
+                    return Ok();
+                }
 
-                return Ok();
+                return BadRequest();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -44,11 +48,16 @@ namespace SNS_API.Controllers
             {
                 var subcategories = await _subcategoryService.GetAllAsync();
 
-                return Ok(subcategories);
+                if (subcategories.Any()) 
+                {
+                    return Ok(subcategories);
+                }
+
+                return NotFound();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -61,11 +70,16 @@ namespace SNS_API.Controllers
             {
                 var category = await _subcategoryService.GetByIdAsync(id);
 
-                return Ok(category);
+                if (category != null)
+                {
+                    return Ok(category);
+                }
+
+                return NotFound();
             }
             catch
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -73,14 +87,22 @@ namespace SNS_API.Controllers
         [Route("{id}")]
         public async Task<ActionResult> UpdateSubcategory([FromRoute] int id, [FromBody] UpdateSubcategoryRequest request)
         {
-            var actionSuccess = await _subcategoryService.UpdateAsync(id, request.SubcategoryName);
-
-            if (actionSuccess)
+            try
             {
-                return Ok();
-            }
+                var actionSuccess = await _subcategoryService.UpdateAsync(id, request.SubcategoryName);
 
-            return BadRequest();
+                if (actionSuccess)
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpDelete]
@@ -88,14 +110,21 @@ namespace SNS_API.Controllers
 
         public async Task<ActionResult> DeleteSubcategory([FromRoute] int id)
         {
-            var actionSuccess = await _subcategoryService.DeleteAsync(id);
-
-            if (actionSuccess)
+            try
             {
-                return Ok();
-            }
+                var actionSuccess = await _subcategoryService.DeleteAsync(id);
 
-            return BadRequest();
+                if (actionSuccess)
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }
