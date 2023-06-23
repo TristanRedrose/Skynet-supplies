@@ -1,0 +1,35 @@
+stages:
+    - build
+    - deploy
+
+build:
+    image: bitnami/dotnet-sdk:7.0.305
+    stage: build
+    script:
+        - dotnet restore
+        - cd SNS-API
+        - dotnet build -o ../build -c Release -r linux-arm64 --no-self-contained
+    artifacts:
+        name: "api"
+        paths:
+            - build/
+    only:
+        - master
+
+deploy:
+    image: docker:19.03.12
+    stage: deploy
+    dependencies:
+        - build
+    script:
+        - mv Dockerfile build/
+        - cd build
+        - docker stop sns-api || true
+        - docker rm sns-api || true
+        - docker image rm sns-api || true
+        
+        - docker build -t sns-api:latest --build-arg connection_string="${SNS_DB_CONNECTION_STRING}" .
+
+        - docker run -d --name sns-api -p 5045:5000 --link postgresql:postgresql sns-api
+    only:
+        - master
