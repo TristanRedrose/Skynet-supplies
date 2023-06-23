@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SNS_API.Controllers.BaseController;
 using SNS_BLA.Services.Base.IBaseService;
 using SNS_BLA.Services.CategoryService;
 using SNS_BLA.Services.SubCategoryService;

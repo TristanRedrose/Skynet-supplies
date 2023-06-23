@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SNS_API.Controllers.BaseController;
 using SNS_BLA.Services.OrderService;
 using SNS_BLA.Services.ProductService;
 using SNS_BLA.Services.UserService;
