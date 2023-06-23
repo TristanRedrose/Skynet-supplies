@@ -24,10 +24,5 @@ namespace SNS_DLA.Data
         
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
-
     }
 }
