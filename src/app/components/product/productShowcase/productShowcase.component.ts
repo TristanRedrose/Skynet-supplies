@@ -54,6 +54,9 @@ export class ProductShowcaseComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+        if (this.modalService.modalOpen.value === true) {
+            this.modalService.hide();
+        }
     }
 
     loadProducts(filters: HttpParams) {

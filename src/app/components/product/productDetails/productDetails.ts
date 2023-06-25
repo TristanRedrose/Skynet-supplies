@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { finalize } from "rxjs";
+import { Subscription, finalize } from "rxjs";
 import { Product } from "src/app/models/products/product.type";
 import { LoadingService } from "src/app/services/loading/loading.service";
 import { ModalService } from "src/app/services/modal/modal.service";
@@ -12,9 +12,10 @@ import { ProductService } from "src/app/services/products/product.service";
     styleUrls: ['./productDetails.scss'],
 })
 
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
     product!: Product;
     id: string = "";
+    subscription!: Subscription;
 
     constructor(
         private productService: ProductService,
@@ -24,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.route.queryParams.subscribe(params => {
+        this.subscription = this.route.queryParams.subscribe(params => {
             this.id = params['id'];
         });
 
@@ -39,6 +40,13 @@ export class ProductDetailsComponent implements OnInit {
                     this.product = res
                     console.log(this.product)
                 })
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+        if (this.modalService.modalOpen.value === true) {
+            this.modalService.hide();
         }
     }
 

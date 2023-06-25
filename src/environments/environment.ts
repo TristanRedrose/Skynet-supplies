@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  rootApiUrl: "https://localhost:7046",
+  rootApiUrl: "https://skynet-supplies.duckdns.org/api",
 };
 
 /*

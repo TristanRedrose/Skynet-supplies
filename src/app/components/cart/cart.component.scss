@@ -56,3 +56,17 @@
     height: 100%;
     object-fit: contain;
 }
+
+@media only screen and (max-width: 640px) {
+    .order-button {
+        width: 108px;
+        height: 48px;  
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .order-button {
+        width: 92px;
+        height: 40px;  
+    }
+}
