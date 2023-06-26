@@ -1,3 +1,6 @@
+<div *ngIf="loading$ | async" class="loading-container">
+    <spinner-component></spinner-component>
+</div>
 <div *ngIf="product" class="product-details">
     <div class="spacing">
         <div class="product-details__image-container">
@@ -11,7 +14,7 @@
             <h3 [ngClass]="product.available ? 'green' : 'red'">{{ product.available ? "Available" : "Unavailable" }}</h3>
             <p>{{product.description}}</p>
         </div>
-        <div class="button-container">
+        <div *ngIf="product.available" class="button-container">
             <button class="product-order-button" type="text" (click)="onClick()">
                 <img class="order-cart-image" src="../../../../assets/icons/add-to-cart.png" alt="add-to-cart">
             </button>

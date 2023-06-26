@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     product!: Product;
     id: string = "";
     subscription!: Subscription;
+    loading$ = this.loadingService.loading$;
 
     constructor(
         private productService: ProductService,

@@ -1,7 +1,7 @@
 import { HttpParams } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { finalize } from "rxjs";
+import { catchError, finalize, of } from "rxjs";
 import { Product } from "src/app/models/products/product.type";
 import { LoadingService } from "src/app/services/loading/loading.service";
 import { ProductService } from "src/app/services/products/product.service";
@@ -46,9 +46,12 @@ export class ProductsComponent implements OnInit{
         this.loadingService.show()
         this.productService
             .getAllProducts(filters)
-            .pipe(finalize(() => {
-                this.loadingService.hide();
-            }))
+            .pipe(
+                catchError(err => of({products: [], productCount: 0})),
+                finalize(() => {
+                    this.loadingService.hide();
+                })
+            )
             .subscribe(res => {
                 this.products = res.products;
                 this.productCount = res.productCount;
