@@ -32,7 +32,7 @@ namespace SNS_DLA.Core.Repositories
 
             if (!string.IsNullOrEmpty(searchFilter.Search)) 
             {
-                query = query.Where(p => (p.Name.Contains(searchFilter.Search)));
+                query = query.Where(p => (p.Name.ToLower().Contains(searchFilter.Search.ToLower())));
             }
             
             if (!string.IsNullOrEmpty(categoryFilter.Category))
