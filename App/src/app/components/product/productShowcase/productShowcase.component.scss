@@ -1,0 +1,49 @@
+@import '../../../vars.scss';
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 50px;
+    justify-items: center;
+}
+
+.product-showcase, .loading-container  {
+    min-height: 475px;
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-product-image {
+    object-fit: contain;
+    max-height: 475px;
+}
+
+@media only screen and (max-width: 1180px) {
+    .products-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+}
+.showcase-text {
+    text-align: center;
+    margin-bottom: 32px;
+
+    & span {
+        color: rgba($royal, 0.6);
+    }
+}

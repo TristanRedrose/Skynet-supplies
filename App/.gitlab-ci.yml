@@ -1,0 +1,33 @@
+stages:
+    - build
+    - deploy
+
+build:
+    image: node:gallium-alpine3.15
+    stage: build
+    script:
+        - yarn
+        - yarn build
+        - mv dist/skynet-supplies/ spa/
+    artifacts:
+        name: "spa"
+        paths:
+            - spa/
+    only: 
+        - main
+
+deploy:
+    image: docker:19.03.12
+    stage: deploy
+    dependencies:
+        - build
+    script:
+        - docker stop sns-spa || true
+        - docker rm sns-spa || true
+        - docker image rm sns-spa || true
+
+        - docker build -t sns-spa:latest .
+        - docker run -d --name sns-spa -p 5046:80 sns-spa
+    only: 
+        - main
+

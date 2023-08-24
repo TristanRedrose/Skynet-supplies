@@ -1,0 +1,6 @@
+<div *ngIf="(modalOpen | async)" class="modal">
+    <div class="modal-background" (click)="closeModal()"></div>
+    <div class="modal-content">
+        <ng-content></ng-content>
+    </div>
+</div>

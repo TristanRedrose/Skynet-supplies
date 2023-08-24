@@ -1,0 +1,129 @@
+@import '../../../vars.scss';
+
+.product-details {
+    margin: 0 auto;;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.spacing {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-right: 32px;
+}
+
+.product-details__info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-details__image-container {
+    box-sizing: border-box;
+    padding: 8px;
+    width: fit-content;
+    height: 450px;
+    border: 2px rgba($royal, 0.6) solid;
+    border-radius: 16px;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.red {
+    color: crimson;
+}
+
+.green {
+    color: rgb(93, 208, 64);
+}
+
+.price-text {
+    color: $blue;
+}
+
+.icon-text {
+    color: rgba($royal, 0.5);
+}
+
+p {
+    max-width: 500px;
+}
+
+.product-order-button {
+    width: 120px;
+    height: 48px;
+    background-color: $yellow-shade;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightgreen;
+    }
+}
+
+.order-cart-image {
+    width: 60px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.button-container {
+    margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 920px) {
+    .product-details__image-container {
+        height: 350px;
+    }
+
+    .product-order-button {
+        width: 90px;
+        height: 40px;
+    }
+
+    .button-container {
+        margin-bottom: 20px;
+    }
+
+    .order-cart-image {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .product-details {
+        flex-direction: column;
+    }
+
+    .spacing {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .product-details__image-container {
+        width: 100%;
+    }
+
+    .button-container {
+        margin-bottom: 0px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+

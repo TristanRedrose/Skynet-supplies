@@ -1,0 +1,11 @@
+
+<div class="center-div">
+    <h3>Orders</h3>
+    <div class="orders-container">
+        <order-box-component 
+            *ngFor="let order of orders"
+            [order]="order"
+        >
+        </order-box-component>
+    </div>
+</div>

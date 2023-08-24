@@ -1,0 +1,19 @@
+<div class="order-box" (click)="goToOrderDetails()">
+    <div class="order-image-container">
+        <img class="order-image" src="{{ productImage }}" alt="">
+    </div>
+    <div class="order-info">
+        <div>
+            <p>Order id: {{ order.orderId }}</p>
+        </div>
+        <div>
+            <p>Items: {{ productCount(order) }}</p>
+        </div>
+        <div>
+            <p>Checkout: ${{ order.checkoutPrice }} </p>
+        </div>
+        <div>
+            <p>Status: {{ OrderStatus[order.status] }}</p>
+        </div>
+    </div>
+</div>

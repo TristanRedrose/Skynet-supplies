@@ -1,0 +1,29 @@
+<div class="b-category-bar">
+    <div class="b-category-bar__content">
+        <div class="b-category-container" *ngFor="let category of categories">
+            <div 
+            class="b-category-bar__navtext" 
+            routerLink="/products" 
+            [queryParams]="{page: 1, itemsPerPage: itemCount, category: category.name}"
+            routerLinkActive="yellow-background"
+            >
+                {{category.name}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="category-bar__decorator"></div>
+<div *ngIf="selectedCategory && !(loading$ | async)" class="subcategory-menu">
+    <img *ngIf="!menuOpen" class="subcategory-menu-icon" src="../../../../assets/icons/grid.png" (click)="toggleMenu()">
+    <img *ngIf="menuOpen" class="subcategory-menu-icon" src="../../../../assets/icons/category.png" (click)="toggleMenu()">
+    <div *ngIf="menuOpen" class="b-subcategory-container">
+        <p class="subcategory-text"
+            *ngFor="let subcategory of selectedCategory.subcategories"
+            routerLink="/products" 
+            [queryParams]="{page: 1, itemsPerPage: itemCount, category: selectedCategory.name, subcategory: subcategory.name}"
+            (click)="closeMenu()"
+        >
+            {{subcategory.name}}
+        </p>
+    </div>
+</div>

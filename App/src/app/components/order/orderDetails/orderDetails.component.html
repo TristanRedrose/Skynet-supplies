@@ -1,0 +1,8 @@
+<div *ngIf="!(loading$ | async) && order.cartItems.length" class="cart-items__container">
+    <h3 class="title-text">Order: {{ order.orderId }}</h3>
+    <order-details-table 
+        [cartItems]="order.cartItems"
+        [totalPrice]="order.checkoutPrice"
+    >
+    </order-details-table>
+</div>

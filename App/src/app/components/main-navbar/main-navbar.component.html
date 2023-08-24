@@ -1,0 +1,56 @@
+<div class="b-about-bar">
+    <nav class="b-about-bar__content">
+        <div class="b-about-bar__navtext">
+            <a routerLink="about" routerLinkActive="nav-active">
+                About us
+                <img src="../../../assets/icons/information.png" alt="information" class="nav-icon">
+            </a>
+        </div>
+        <div class="b-about-bar__navtext">
+            <a>
+                News
+                <img src="../../../assets/icons/newspaper.png" alt="newspaper" class="nav-icon">
+            </a>
+        </div>
+        <div class="b-about-bar__navtext">
+            <a routerLink="contact" routerLinkActive="nav-active">
+                Contact
+                <img src="../../../assets/icons/contact.png" alt="contact" class="nav-icon">
+            </a> 
+        </div>
+        <div class="navbar-right">
+            <div class="b-about-bar__navtext">
+                <a routerLink="cart" routerLinkActive="nav-active">
+                    {{ cartItemCount$ | async }}
+                    <img src="../../../assets/icons/shopping-cart.png" alt="cart" class="nav-icon">
+                </a>
+            </div>
+            <div *ngIf="!userLoggedIn" class="b-about-bar__navtext">
+                <a routerLink="auth/login" routerLinkActive="nav-active">
+                    Login
+                    <img src="../../../assets/icons/login.png" alt="login" class="nav-icon">
+                </a>
+            </div>
+            <div *ngIf="userLoggedIn" class="b-about-bar__navtext">
+                <a routerLinkActive="nav-active" (click)="toggleUserBar()">
+                    User
+                    <img src="../../../assets/icons/user.png" alt="toggle-bar" class="nav-icon">
+                </a>
+            </div>
+            <div *ngIf="userLoggedIn && userBarOpen" class="user-options-container">
+                <div  class="b-about-bar__navtext" (click)="hideUserBar()">
+                    <a routerLink="/orders" routerLinkActive="nav-active">
+                        Orders
+                        <img src="../../../assets/icons/checkout.png" alt="orders" class="nav-icon">
+                    </a>
+                </div>
+                <div class="b-about-bar__navtext" (click)="logOut()">
+                    <a routerLinkActive="nav-active">
+                        Logout
+                        <img src="../../../assets/icons/logout.png" alt="logout" class="nav-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

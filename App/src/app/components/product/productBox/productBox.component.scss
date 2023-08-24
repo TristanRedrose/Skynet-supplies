@@ -1,0 +1,147 @@
+@import '../../../vars.scss';
+
+.product-container {
+    padding: 8px 16px;
+    height: 350px;
+    width: 265px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+
+    &:hover {
+        box-shadow: 0 5px 11px 0 rgba($yellow-shade, .18), 0 4px 15px 0 rgba($yellow-shade, .15);
+    }
+}
+
+.product-image-container {
+    margin-bottom: 8px;
+}
+
+.product-image {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.product-organiser {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-order-container {
+    display: flex;
+    align-items: center;
+}
+
+.product-order-button {
+    width: 60px;
+    height: 32px;
+    background-color: $yellow-shade;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightgreen;
+    }
+}
+
+.text-box {
+    margin-bottom: 8px;
+    max-height: 40px;
+    overflow: hidden;
+
+    & p {
+        font-size: 0.9rem;
+    }
+
+    & h4 {
+        margin: 0px 0px 8px 0px;
+    }
+
+    & h5 {
+        margin-top: 0px;
+        margin-bottom: 8px;
+    }
+
+    & .red {
+        font-weight: 600;
+        color: crimson;
+    }
+
+    & .green {
+        font-weight: 600;
+        color: rgb(93, 208, 64);
+    }
+
+    &.product-name {
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .product-container {
+        padding: 16px;
+        height: 224px;
+        width: 360px;
+        display: flex;
+        align-items: center;
+    }
+
+    .product-image-container {
+        margin-bottom: 0px;
+        height: 100%;
+        width: 260px;
+        margin-right: 16px;
+    }
+    
+    .product-image {
+        object-fit: contain;
+    }
+
+    .product-organiser {
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        height: 100%;
+        width: 100px;
+    }
+
+    .text-box {
+        margin-bottom: 0px;
+        max-height: 72px;
+    
+        & p {
+            font-size: 0.7rem;
+            margin-bottom: 8px;
+        }
+    
+        & h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+    
+        & h5 {
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .product-container {
+        width: 300px;
+    }
+
+    .product-image-container {
+        width: 160px;
+    }
+
+    .text-box {
+        margin-bottom: 0px;
+        width: 80px;
+    }
+}

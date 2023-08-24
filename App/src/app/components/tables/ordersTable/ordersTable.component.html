@@ -1,0 +1,60 @@
+<modal-component *ngIf="orderData">
+    <h4>Are you sure you want to remove order: {{orderData.orderId}}?</h4>
+    <div class="modal-button-container">
+        <button class="edit-button" (click)="closeModal()">Close</button>
+        <button class="delete-button" (click)="deleteOrder(orderData.orderId)">Delete</button>
+    </div>
+</modal-component>
+
+<table class="table">
+    <thead class="table-head">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                CUSTOMER
+            </th>
+            <th>
+                PRODUCTS
+            </th>
+            <th>
+                CHECKOUT PRICE
+            </th>
+            <th>
+                STATUS
+            </th>
+            <th>
+                EDIT
+            </th>
+            <th>
+                DELETE
+            </th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let order of orders" class="table-body">
+        <tr>
+            <td>
+                {{order.orderId}}
+            </td>
+            <td>
+                {{order.customerName}}
+            </td>
+            <td>
+                {{ productCount(order) }}
+            </td>
+            <td>
+                $ {{order.checkoutPrice}}
+            </td>
+            <td>
+                {{ OrderStatus[order.status] }}
+            </td>
+            <td class="button-box">
+                <button class="edit-button" (click)="goToEdit(order.orderId)">Edit</button>
+            </td>
+            <td class="button-box">
+                <button class="delete-button" type="text" (click)="openModal(order)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
